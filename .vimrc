@@ -7,8 +7,6 @@ call vundle#begin()
 " required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'file:///Users/daniel/src/python/vim-traad'
-
 Plugin 'kien/ctrlp.vim'
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
