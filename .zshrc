@@ -160,9 +160,14 @@ function cdf {
 # Most of those are already set by oh-my-zsh
 
 # for managing our dotfiles repo
-# git init --bare ~/.dotfiles
+#git init --bare ~/.dotfiles
 alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-# dotfiles config status.showUntrackedFiles no
+#dotfiles config status.showUntrackedFiles no
+
+alias dfs='dotfiles status'
+alias dfa='dotfiles add'
+alias dfd='dotfiles diff'
+alias dfcommit='dotfiles commit'
 
 alias vimr='mvim --remote-silent'
 
