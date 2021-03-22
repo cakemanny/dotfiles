@@ -179,7 +179,9 @@ alias vimr='mvim --remote-silent'
 [[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 # iTerm2 Shell Integration
-[[ -f $HOME/.iterm2_shell_integration.zsh ]] && source $HOME/.iterm2_shell_integration.zsh
+if [[ "$TERM_PROGRAM" == "iTerm.app" && -f $HOME/.iterm2_shell_integration.zsh ]]; then
+    source $HOME/.iterm2_shell_integration.zsh
+fi
 
 # complete for the kitty command
 if [[ -e /usr/local/bin/kitty ]]; then
