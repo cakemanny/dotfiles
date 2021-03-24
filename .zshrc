@@ -24,7 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to disable command auto-correction.
 # DISABLE_CORRECTION="true"
@@ -49,7 +49,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump brew sbt scala django)
-plugins=(git)
+plugins=(git brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -57,10 +57,10 @@ source $ZSH/oh-my-zsh.sh
 
 # - - - - - - Environment - - - - - -
 
-export PATH=$PATH:/usr/local/mysql/bin:~/.cabal/bin:~/.cargo/bin
-export JAVA_HOME=$(/usr/libexec/java_home)
-export SCALA_HOME=/usr/local/opt/scala/idea
-export TOMCAT_HOME=/usr/local/apache-tomcat
+export PATH=$PATH:~/.cabal/bin:~/.cargo/bin
+#export JAVA_HOME=$(/usr/libexec/java_home)
+#export SCALA_HOME=/usr/local/opt/scala/idea
+#export TOMCAT_HOME=/usr/local/apache-tomcat
 #export CC=/usr/local/bin/gcc-7
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 export ARCHFLAGS="-arch x86_64"
@@ -69,24 +69,31 @@ export VISUAL=vim
 export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
 export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse.engineType=Node"
 export GOPATH=$HOME/.gopath
+# TODO: Migrate to .gopath
+if [[ "${HOST/.*}" == "tsw-dan-laptop" ]]; then
+    export GOPATH=$HOME/src/go
+fi
+export FZF_DEFAULT_COMMAND='ag --nocolor -g .'
+
+#export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist noma' -\""
 
 export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export ASPNETCORE_ENVIRONMENT=Development
 
 . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-(which direnv 1>/dev/null 2>/dev/null) && eval "$(direnv hook zsh)"
-
 # to fix ocaml upgrade
 # https://github.com/ocaml/opam/issues/3708#issuecomment-448549584
 
-# add user installed python modules
-#export PATH=$PATH:$HOME/Library/Python/3.5/bin
-
 # Make this one last
-
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+export LANG=en_GB.UTF-8
+
+# Install direnv hook
+(whence direnv 1>/dev/null) && eval "$(direnv hook zsh)"
 
 # - - - - - - Shell Options - - - - - -
 # Most of the ones we want are already set by the oh-my-zsh
@@ -110,7 +117,30 @@ function _git-branch-prompt() {
 }
 PROMPT='$(_user_host)%~$(_git-branch-prompt) %% '
 # The defaults. I don't like bold!
-LSCOLORS='exfxcxdxbxegedabagacad'
+export LSCOLORS='exfxcxdxbxegedabagacad'
+
+# remove the ls='ls -G' alias (color for default ls)
+unalias ls
+# enable colors via the env var - so we can use gnu ls as well
+export CLICOLOR=1
+
+
+## Now doing this via iterm status bar
+# show kubectl context
+#function zle-line-init {
+#    RPS1="($(kube_ctx_name))"
+#    RPS2="$RPS1"
+#    zle reset-prompt
+#}
+#zle -N zle-line-init
+
+function iterm2_print_user_vars {
+    iterm2_set_user_var kubecontext $(kubectl config current-context)
+}
+
+if [[ "$TERM_PROGRAM" == "iTerm.app" && -e "${HOME}/.iterm2_shell_integration.zsh" ]]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
 # -------------------- Vim Mode --------------------
 
@@ -147,7 +177,7 @@ bindkey -a 'L'  vi-end-of-line
 
 # -------------------- Functions --------------------
 
-function cdf {
+function cdfinder {
     local target="$(osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)')"
     if [ "$target" != "" ]; then
         cd "$target"; pwd
@@ -156,12 +186,54 @@ function cdf {
     fi
 }
 
+function cdf {
+    local toplevel
+    local directory
+    if [ -z "$1" ]; then
+        toplevel=.
+    else
+        toplevel="$1"
+    fi
+    directory=$(find "$toplevel" \
+        \( -name venv \
+        -o -name bower_components \
+        -o -name node_modules \
+        -o -name collect_static \
+        -o -name .git \
+        -o -name __pycache__ \
+        \) -prune -o -type d -print | fzf)
+    if [ ! -z "$directory" ]; then
+        cd "$directory"
+    fi
+}
+
+function ghash {
+    local ref
+    if [ -z "$1" ]; then
+        ref=HEAD
+    else
+        ref="$1"
+    fi
+    git rev-parse --short=10 "$ref"
+}
+
+function b64enc {
+    base64 -i <(echo -n "$1")
+}
+function b64dec {
+    base64 --decode -i <(echo -n "$1")
+}
+
 # -------------------- Aliases --------------------
 # Most of those are already set by oh-my-zsh
 
 # for managing our dotfiles repo
 #git init --bare ~/.dotfiles
-alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+if [[ "${HOST/.*}" == "tsw-dan-laptop" ]]; then
+    alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/workdir'
+else
+    alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+fi
 #dotfiles config status.showUntrackedFiles no
 
 alias dfs='dotfiles status'
@@ -175,20 +247,42 @@ alias vimr='mvim --remote-silent'
 [[ -f $HOME/.fubectl.source ]] && source $HOME/.fubectl.source
 
 
+alias recent-branches="git for-each-ref --sort=-committerdate refs/heads/ | sed 's|.*/||'"
+alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*/||" | fzf)'
+alias pip='test -n "$VIRTUAL_ENV" && env pip'
+alias mutt='neomutt'
+
+# because I'm so vimmed
+alias ':e'='vim'
+
+# - kubectl aliases -
+# Get current context
+alias krc='kubectl config current-context'
+# List all contexts
+alias klc='kubectl config get-contexts -o name | sed "s/^/  /;\|^  $(krc)$|s/ /*/"'
+# Change current context
+alias kcc='kubectl config use-context "$(klc | fzf -e --height=10 | sed "s/^..//")"'
+
+# Get current namespace
+alias krn='kubectl config get-contexts --no-headers "$(krc)" | awk "{print \$5}" | sed "s/^$/default/"'
+# List all namespaces
+alias kln='kubectl get -o name ns | sed "s|^.*/|  |;\|$(krn)|s/ /*/"'
+# Change current namespace
+alias kcn='kubectl config set-context --current --namespace "$(kln | fzf -e | sed "s/^..//")"'
+
+
 # -------------------- Completions --------------------
 
+# FIXME: Use brew cask for this
 # The next line updates PATH for the Google Cloud SDK.
 [[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
 [[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
-# iTerm2 Shell Integration
-if [[ "$TERM_PROGRAM" == "iTerm.app" && -f $HOME/.iterm2_shell_integration.zsh ]]; then
-    source $HOME/.iterm2_shell_integration.zsh
-fi
-
 # complete for the kitty command
 if [[ -e /usr/local/bin/kitty ]]; then
     /usr/local/bin/kitty + complete setup zsh | source /dev/stdin
 fi
+
+[[ -f $HOME/.completions.d/helm ]] && source $HOME/.completions.d/helm
