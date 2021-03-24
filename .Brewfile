@@ -66,6 +66,8 @@ brew "opam"
 brew "p7zip"
 brew "pandoc"
 brew "pgcli"
+# pager for psql / pgcli / mysql / etc
+brew "pspg"
 # For Rasterizing PDFs?
 #brew "poppler"
 #brew "postgresql"
