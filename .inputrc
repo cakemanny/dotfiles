@@ -1,0 +1,11 @@
+# emacs is horrible
+set editing-mode vi
+set keyseq-timeout 250
+
+set keymap vi-insert
+"kj": vi-movement-mode
+
+set keymap vi-command
+"H": beginning-of-line
+"L": end-of-line
+
