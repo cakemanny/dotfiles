@@ -21,13 +21,13 @@ DISABLE_AUTO_UPDATE="true"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to disable command auto-correction.
-# DISABLE_CORRECTION="true"
+DISABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -51,7 +51,13 @@ DISABLE_AUTO_TITLE="true"
 #plugins=(git autojump brew sbt scala django)
 plugins=(git brew)
 
-source $ZSH/oh-my-zsh.sh
+if [[ -d $ZSH ]]; then
+    source $ZSH/oh-my-zsh.sh
+else
+    zstyle :compinstall filename "$HOME/.zshrc"
+    autoload -Uz compinit
+    compinit
+fi
 
 # ------------ User configuration ------------
 
@@ -81,7 +87,7 @@ export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export ASPNETCORE_ENVIRONMENT=Development
 
-. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+source $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # to fix ocaml upgrade
 # https://github.com/ocaml/opam/issues/3708#issuecomment-448549584
 
@@ -98,9 +104,6 @@ export LANG=en_GB.UTF-8
 # - - - - - - Shell Options - - - - - -
 # Most of the ones we want are already set by the oh-my-zsh
 
-# Not good feature
-unsetopt correctall
-
 setopt extendedglob # Allows for regex style globbing
 
 # - - - - - - Prompt Display and Colors - - - - - -
@@ -111,16 +114,16 @@ function _user_host() {
     [[ -n $me ]] && echo "$me:"
 }
 function _git-branch-prompt() {
-    local ref=$(git symbolic-ref HEAD 2>/dev/null)
+    local ref=$(command git symbolic-ref HEAD 2>/dev/null)
     local branch=${ref##*/}
     [ $branch ] && printf " (%s)" $branch
 }
+# allow the use of the functions in the prompt
+setopt prompt_subst
 PROMPT='$(_user_host)%~$(_git-branch-prompt) %% '
 # The defaults. I don't like bold!
 export LSCOLORS='exfxcxdxbxegedabagacad'
 
-# remove the ls='ls -G' alias (color for default ls)
-unalias ls
 # enable colors via the env var - so we can use gnu ls as well
 export CLICOLOR=1
 
@@ -226,6 +229,15 @@ function b64dec {
 
 # -------------------- Aliases --------------------
 # Most of those are already set by oh-my-zsh
+
+# git aliases for when oh-my-zsh is not there
+alias gst='git status'
+alias gl='git pull'
+alias gd='git diff'
+alias ga='git add'
+alias gp='git push'
+alias gco='git checkout'
+
 
 # for managing our dotfiles repo
 #git init --bare ~/.dotfiles
