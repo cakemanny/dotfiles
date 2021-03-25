@@ -292,9 +292,16 @@ alias kcn='kubectl config set-context --current --namespace "$(kln | fzf -e | se
 # The next line enables shell command completion for gcloud.
 [[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
-# complete for the kitty command
-if [[ -e /usr/local/bin/kitty ]]; then
-    /usr/local/bin/kitty + complete setup zsh | source /dev/stdin
-fi
+# completion for the kitty command
+_kitty() {
+    local src
+    # Send all words up to the word the cursor is currently on
+    src=$(printf "%s\n" "${(@)words[1,$CURRENT]}" | kitty +complete zsh)
+    if [[ $? == 0 ]]; then
+        eval ${src}
+    fi
+}
+compdef _kitty kitty
 
-[[ -f $HOME/.completions.d/helm ]] && source $HOME/.completions.d/helm
+# generate with helm completion zsh
+[[ -f $HOME/.completions.d/helm.inc.zsh ]] && source $HOME/.completions.d/helm.inc.zsh
