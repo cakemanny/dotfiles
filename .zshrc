@@ -145,6 +145,13 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" && -e "${HOME}/.iterm2_shell_integration.zs
     source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
+# Don't need user@host on local
+ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)%~'
+# Avoid duplication of directory in terminals with independent dir display
+if [[ "$TERM_PROGRAM" == Apple_Terminal ]]; then
+  ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)'
+fi
+
 # -------------------- Vim Mode --------------------
 
 #  enable vim mode on comandline
