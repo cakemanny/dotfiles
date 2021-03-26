@@ -253,8 +253,6 @@ alias dfa='dotfiles add'
 alias dfd='dotfiles diff'
 alias dfcommit='dotfiles commit'
 
-alias vimr='mvim --remote-silent'
-
 # https://github.com/kubermatic/fubectl
 [[ -f $HOME/.fubectl.source ]] && source $HOME/.fubectl.source
 
@@ -285,12 +283,12 @@ alias kcn='kubectl config set-context --current --namespace "$(kln | fzf -e | se
 
 # -------------------- Completions --------------------
 
-# FIXME: Use brew cask for this
+GOOGLE_CLOUD_SDK=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
-[[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/google-cloud-sdk/path.zsh.inc"
+[[ -f "$GOOGLE_CLOUD_SDK/path.zsh.inc" ]] && source "$GOOGLE_CLOUD_SDK/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
-[[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
+[[ -f "$GOOGLE_CLOUD_SDK/completion.zsh.inc" ]] && source "$GOOGLE_CLOUD_SDK/completion.zsh.inc"
 
 # completion for the kitty command
 _kitty() {

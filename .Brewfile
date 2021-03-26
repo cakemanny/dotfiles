@@ -99,6 +99,7 @@ cask "basictex"
 cask "calibre"
 cask "kitty"
 cask "xquartz"
+cask "google-cloud-sdk"
 
 # we should or would also add:
 # chrome
