@@ -23,10 +23,12 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-line'
 Plugin 'wellle/targets.vim'
 
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp' " required for deoplete
-Plugin 'roxma/vim-hug-neovim-rpc' " required for deoplete
-Plugin 'zchee/deoplete-go'
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'roxma/nvim-yarp' " required for deoplete
+"Plugin 'roxma/vim-hug-neovim-rpc' " required for deoplete
+"Plugin 'zchee/deoplete-go'
+
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language specific plugins
 Plugin 'kongo2002/fsharp-vim'
@@ -43,9 +45,10 @@ Plugin 'mxw/vim-jsx'
 "Plugin 'MaxMEllon/vim-jsx-pretty'
 "Plugin 'neoclide/vim-jsx-improve'
 Plugin 'neomutt/neomutt.vim'
-Plugin 'Quramy/tsuquyomi' " a typescript autocompletion thing
+"Plugin 'Quramy/tsuquyomi' " a typescript autocompletion thing
 Plugin 'leafgarland/typescript-vim'
 Plugin 'hylang/vim-hy'
+
 
 call vundle#end()
 
@@ -385,7 +388,7 @@ let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
 let g:ale_fixers = {'javascript': ['prettier'], 'css': ['prettier']}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
 
