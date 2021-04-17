@@ -3,15 +3,14 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" required
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'scrooloose/syntastic'
 Plugin 'dense-analysis/ale'
+" Maybe consider fzf at some point?
+" junegunn/fzf.vim
 Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
@@ -27,28 +26,29 @@ Plugin 'wellle/targets.vim'
 "Plugin 'roxma/nvim-yarp' " required for deoplete
 "Plugin 'roxma/vim-hug-neovim-rpc' " required for deoplete
 "Plugin 'zchee/deoplete-go'
+Plugin 'direnv/direnv.vim'
 
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language specific plugins
-Plugin 'kongo2002/fsharp-vim'
+"Plugin 'tpope/vim-fireplace' " clojure
+"Plugin 'kongo2002/fsharp-vim'
 Plugin 'vim-scripts/indenthaskell.vim'
-Plugin 'Shutnik/jshint2.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'OrangeT/vim-csharp'
+"Plugin 'Shutnik/jshint2.vim'
+" Plugin 'rust-lang/rust.vim'
+"Plugin 'OrangeT/vim-csharp'
 Plugin 'fatih/vim-go'
-Plugin 'b4winckler/vim-objc'
-Plugin 'Vimjas/vim-python-pep8-indent.git'
-Plugin 'derekwyatt/vim-scala'
+" Plugin 'b4winckler/vim-objc'
+Plugin 'Vimjas/vim-python-pep8-indent'
+"Plugin 'derekwyatt/vim-scala'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 "Plugin 'MaxMEllon/vim-jsx-pretty'
 "Plugin 'neoclide/vim-jsx-improve'
 Plugin 'neomutt/neomutt.vim'
 "Plugin 'Quramy/tsuquyomi' " a typescript autocompletion thing
-Plugin 'leafgarland/typescript-vim'
-Plugin 'hylang/vim-hy'
-
+"Plugin 'leafgarland/typescript-vim'
+"Plugin 'hylang/vim-hy'
 
 call vundle#end()
 
@@ -210,19 +210,16 @@ vnoremap <Leader>( <esc>`>a<space>)<esc>`<i(<space><esc>`>f)<left>
 vnoremap <Leader>] <esc>`>a]<esc>`<i[<esc>`>f]<left>
 vnoremap <Leader>[ <esc>`>a<space>]<esc>`<i[<space><esc>`>f]<left>
 
-" Ctrl-U to uppercase current word
-"inoremap <c-u>   <ESC>viwUea
-
 " Edit our .vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 
 " Taken from Shawn Biddle's Vim Training Class
 
-inoremap <Leader>' ''<left>
-inoremap <Leader>" ""<left>
-inoremap <Leader>( ()<left>
-inoremap <Leader>[ []<left>
-inoremap <Leader>{ {}<left>
+"inoremap <Leader>' ''<left>
+"inoremap <Leader>" ""<left>
+"inoremap <Leader>( ()<left>
+"inoremap <Leader>[ []<left>
+"inoremap <Leader>{ {}<left>
 
 " make , a text object
 nnoremap di, f,dT,
@@ -268,7 +265,8 @@ else
     set guifont=Consolas
     set guifontwide=NSimsun:h10
 endif
-if $COLORTERM == 'truecolor'
+" tmux is only a problem on tsw-dan-laptop...
+if $COLORTERM == 'truecolor' && $TMUX == ''
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
@@ -299,10 +297,8 @@ set nowrap              " Don't automatically wrap on load
 set formatoptions-=t    " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColoColumn ctermbg=233
-if $SSH_CONNECTION == "" " this is slow over ssh
-    set relativenumber  " show line numbers as relative jumps
-endif
-set ruler       " show position is bottom right hand corner
+set relativenumber  " show line numbers as relative jumps
+set ruler       " show position in bottom right hand corner
 
 
 set hlsearch    " Highlight search results
@@ -324,21 +320,21 @@ nnoremap <Leader>cs :%s/\s\+$//<CR>
 
 set tag=tags;/
 
-" These are now mostly redundant thanks to vim-sleuth
+" Most indent settings are now handled by vim-sleuth
+" TODO: use augroups
 autocmd FileType make setlocal noexpandtab
 autocmd FileType go setlocal noexpandtab
 autocmd FileType diff color desert
 autocmd FileType clojure let b:delimitMate_quotes = "\""
 
 " netrw configuration
-let g:netrw_banner      = 0
+"let g:netrw_banner      = 0
 let g:netrw_preview     = 1  " vsplit preview
 let g:netrw_liststyle   = 3  " tree
 "let g:netrw_winsize     = 30
-" get relativenumber
+" get relativenumber in netrw
 let g:netrw_bufsettings = 'nomodifiable nomodified number nobuflisted nowrap readonly'
-"set splitright
-" Open netrw
+" open netrw
 nnoremap <Leader>ex :Explore<CR>
 
 "" JSHint configuration
@@ -348,7 +344,7 @@ nnoremap <Leader>ex :Explore<CR>
 "let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project)'
         ""\ 'dir': '\v[\/]\.(git|hg|svn)$\|target\|node_modules\|bower_components',
 let g:ctrlp_custom_ignore = {
-        \ 'dir': 'target\|node_modules\|bower_components\|build\|_build',
+        \ 'dir': 'target\|node_modules\|bower_components\|build\|_build\|venv',
         \ 'file': '\v\.(exe|so|dll|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$',
         \ }
 let g:ctrlp_user_command = {
@@ -358,7 +354,9 @@ let g:ctrlp_user_command = {
             \ },
         \ 'fallback': 'find %s -type f'
         \ }
-let g:ctrlp_working_path_mode = '0'
+
+" work from current dir - default is 'ra'
+let g:ctrlp_working_path_mode = ''
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
@@ -381,17 +379,19 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14'
 let g:syntastic_python_checkers = ['pyflakes']
 
 let g:syntastic_go_checkers = ['go', 'govet']
+
 let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_ocaml_checkers = ['merlin']
 " ignore ocamlyacc and ocamllex files
 let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
+" ## ALE
+let g:ale_linters = {'python': ['flake8']}
 let g:ale_fixers = {'javascript': ['prettier'], 'css': ['prettier']}
 let g:ale_fix_on_save = 0
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
-
 
 " Fix macvim python problems
 if has('mac')
@@ -413,12 +413,39 @@ let g:go_fmt_command = 'goimports'
 " auto creating a dumb hello world program on each new file is stupid
 let g:go_template_autocreate = 0
 
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
+
 " Don't enable deoplete straight away - makes it slow
 let g:deoplete#enable_at_startup = 0
 " settings for deoplete-go
 let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
+" ## coc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" useful functions
+function! CloseHiddenBuffers()
+  let i = 0
+  let n = bufnr('$')
+  while i < n
+    let i = i + 1
+    if bufloaded(i) && bufwinnr(i) < 0
+      exe 'bw ' . i
+    endif
+  endwhile
+endfun
+
+" Ripgrep or The Silver Searcher
+"if executable('rg')
+  "set grepprg=rg\ --color\ never\ --no-heading
+  "let g:ctrlp_user_command = 'rg %s --color never --files'
+  "let g:ctrlp_use_caching = 0
+"elseif executable('ag')
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -430,8 +457,8 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 " bind K to grep word under cursor
-nnoremap K yiw:grep! <C-R>+<CR>:cw<CR>
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap K yiw:grep! "\b<C-R>+\b"<CR>:cw<CR>
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 
 "function! SendQuery()
