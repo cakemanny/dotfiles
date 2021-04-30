@@ -63,7 +63,6 @@ brew "nginx"
 brew "nmap"
 brew "node"
 brew "opam"
-brew "p7zip"
 brew "pandoc"
 brew "pgcli"
 # pager for psql / pgcli / mysql / etc
