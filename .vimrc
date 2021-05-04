@@ -344,8 +344,8 @@ nnoremap <Leader>ex :Explore<CR>
 "let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project)'
         ""\ 'dir': '\v[\/]\.(git|hg|svn)$\|target\|node_modules\|bower_components',
 let g:ctrlp_custom_ignore = {
-        \ 'dir': 'target\|node_modules\|bower_components\|build\|_build\|venv',
-        \ 'file': '\v\.(exe|so|dll|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$',
+        \ 'dir': 'target\|node_modules\|bower_components\|build\|_build\|venv\|__pycache__',
+        \ 'file': '\v\.(exe|so|dll|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|pyc)$',
         \ }
 let g:ctrlp_user_command = {
         \ 'types': {
