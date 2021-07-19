@@ -178,6 +178,9 @@ bindkey    '^H' backward-delete-char
 bindkey -M vicmd '^s' history-incremental-search-backward
 bindkey -M viins '^s' history-incremental-search-backward
 
+# edit line in vim
+bindkey -M vicmd ' ' edit-command-line
+
 # my own bindings pretty much straight from the vimrc
 bindkey -v 'kj' vi-cmd-mode
 bindkey -M visual 'kj' deactivate-region
