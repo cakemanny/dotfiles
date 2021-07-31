@@ -41,6 +41,7 @@ brew "haskell-stack"
 brew "helm"
 # Github hub
 brew "hub"
+brew "gh"
 brew "imagemagick"
 #brew "ivy"
 #brew "jbig2dec"
