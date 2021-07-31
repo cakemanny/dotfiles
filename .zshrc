@@ -54,9 +54,22 @@ plugins=(git brew)
 if [[ -d $ZSH ]]; then
     source $ZSH/oh-my-zsh.sh
 else
+    # case insensitive and substring completion
+    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+    # finish loading compsys
     zstyle :compinstall filename "$HOME/.zshrc"
     autoload -Uz compinit
     compinit
+
+    # History
+    HISTSIZE=500000
+    SAVEHIST=100000
+    setopt extended_history
+    setopt hist_expire_dups_first
+    setopt hist_ignore_dups
+    setopt hist_ignore_space
+    setopt hist_verify
+    setopt share_history
 fi
 
 # ------------ User configuration ------------
@@ -90,6 +103,13 @@ export ASPNETCORE_ENVIRONMENT=Development
 source $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # to fix ocaml upgrade
 # https://github.com/ocaml/opam/issues/3708#issuecomment-448549584
+
+if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
+    export HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+    export HOMEBREW_REPOSITORY="/opt/homebrew"
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+fi
 
 # Make this one last
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
@@ -149,7 +169,7 @@ fi
 ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)%~'
 # Avoid duplication of directory in terminals with independent dir display
 if [[ "$TERM_PROGRAM" == Apple_Terminal ]]; then
-  ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)'
+    ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)'
 fi
 
 # -------------------- Vim Mode --------------------
@@ -252,9 +272,9 @@ alias gco='git checkout'
 # for managing our dotfiles repo
 #git init --bare ~/.dotfiles
 if [[ "${HOST/.*}" == "tsw-dan-laptop" ]]; then
-    alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/workdir'
+    alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/workdir'
 else
-    alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 fi
 #dotfiles config status.showUntrackedFiles no
 
