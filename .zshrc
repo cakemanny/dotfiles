@@ -86,7 +86,7 @@ export PATH=$PATH:~/.cabal/bin:~/.cargo/bin
 #export TOMCAT_HOME=/usr/local/apache-tomcat
 #export CC=/usr/local/bin/gcc-7
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
-export ARCHFLAGS="-arch x86_64"
+#export ARCHFLAGS="-arch x86_64"
 export EDITOR=vim
 export VISUAL=vim
 export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
