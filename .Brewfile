@@ -100,13 +100,13 @@ cask "calibre"
 cask "kitty"
 cask "xquartz"
 cask "google-cloud-sdk"
+cask "vlc"
 
 # we should or would also add:
 # chrome
 # firefox
 # dropbox
 # google drive
-# VLC
 # sequel ace
 # Visual Studio Code
 # 010 Editor?
