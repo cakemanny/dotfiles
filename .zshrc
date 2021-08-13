@@ -70,6 +70,10 @@ else
     setopt hist_ignore_space
     setopt hist_verify
     setopt share_history
+
+    # Give us the edit-command-line widget
+    autoload edit-command-line
+    zle -N edit-command-line
 fi
 
 # ------------ User configuration ------------
