@@ -317,7 +317,7 @@ alias kcn='kubectl config set-context --current --namespace "$(kln | fzf -e | se
 
 # -------------------- Completions --------------------
 
-GOOGLE_CLOUD_SDK=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+GOOGLE_CLOUD_SDK=${HOMEBREW_PREFIX:-/usr/local}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
 [[ -f "$GOOGLE_CLOUD_SDK/path.zsh.inc" ]] && source "$GOOGLE_CLOUD_SDK/path.zsh.inc"
 

@@ -48,6 +48,7 @@ brew "imagemagick"
 #brew "jbig2enc"
 brew "jq"
 brew "kubernetes-cli"
+brew "fluxctl"
 #brew "leiningen"
 # great embedded key value database
 brew "leveldb"
