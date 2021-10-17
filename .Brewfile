@@ -38,7 +38,6 @@ brew "go"
 # Used for SASL auth with e.g. Gmail
 brew "gsasl"
 brew "haskell-stack"
-brew "helm"
 # Github hub
 brew "hub"
 brew "gh"
