@@ -89,6 +89,7 @@ brew "unrar"
 brew "vim"
 brew "w3m"
 brew "wget"
+brew "yarn"
 brew "youtube-dl"
 brew "zsh"
 # very good and fast compression
