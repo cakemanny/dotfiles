@@ -6,7 +6,7 @@
 [color]
 	ui = true
 [push]
-	default = current
+	default = upstream
 [pull]
 	ff = only
 [alias]
