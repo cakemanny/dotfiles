@@ -108,6 +108,8 @@ source $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # to fix ocaml upgrade
 # https://github.com/ocaml/opam/issues/3708#issuecomment-448549584
 
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+
 if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
     export HOMEBREW_PREFIX="/opt/homebrew"
     export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
@@ -116,7 +118,7 @@ if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
 fi
 
 # Make this one last
-export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -271,6 +273,7 @@ alias gd='git diff'
 alias ga='git add'
 alias gp='git push'
 alias gco='git checkout'
+alias gsu='git submodule update'
 
 
 # for managing our dotfiles repo
