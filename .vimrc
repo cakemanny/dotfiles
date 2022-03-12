@@ -49,6 +49,7 @@ Plugin 'neomutt/neomutt.vim'
 "Plugin 'Quramy/tsuquyomi' " a typescript autocompletion thing
 "Plugin 'leafgarland/typescript-vim'
 "Plugin 'hylang/vim-hy'
+Plugin 'hashivim/vim-terraform'
 
 call vundle#end()
 
