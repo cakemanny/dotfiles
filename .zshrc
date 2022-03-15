@@ -117,6 +117,9 @@ if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 fi
 
+# https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Make this one last
 export PATH=$HOME/bin:$PATH
 
