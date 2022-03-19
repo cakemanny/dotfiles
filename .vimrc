@@ -50,6 +50,7 @@ Plugin 'neomutt/neomutt.vim'
 "Plugin 'leafgarland/typescript-vim'
 "Plugin 'hylang/vim-hy'
 Plugin 'hashivim/vim-terraform'
+Plugin 'google/vim-jsonnet'
 
 call vundle#end()
 
