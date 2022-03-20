@@ -26,7 +26,7 @@ Plugin 'wellle/targets.vim'
 "Plugin 'roxma/nvim-yarp' " required for deoplete
 "Plugin 'roxma/vim-hug-neovim-rpc' " required for deoplete
 "Plugin 'zchee/deoplete-go'
-Plugin 'direnv/direnv.vim'
+"Plugin 'direnv/direnv.vim'
 
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
