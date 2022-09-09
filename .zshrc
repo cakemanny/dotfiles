@@ -94,10 +94,6 @@ export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse
 export GOPATH=$HOME/.gopath
 export NVM_DIR="$HOME/.nvm"
 
-# TODO: Migrate to .gopath
-if [[ "${HOST/.*}" == "tsw-dan-laptop" ]]; then
-    export GOPATH=$HOME/src/go
-fi
 export FZF_DEFAULT_COMMAND='ag --nocolor -g .'
 
 #export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist noma' -\""
@@ -270,6 +266,8 @@ function b64dec {
 
 # -------------------- Aliases --------------------
 # Most of those are already set by oh-my-zsh
+alias ll='ls -lh'
+alias lll='ls -l'
 
 # git aliases for when oh-my-zsh is not there
 alias gst='git status'
@@ -283,11 +281,7 @@ alias gsu='git submodule update'
 
 # for managing our dotfiles repo
 #git init --bare ~/.dotfiles
-if [[ "${HOST/.*}" == "tsw-dan-laptop" ]]; then
-    alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/workdir'
-else
-    alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-fi
+alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #dotfiles config status.showUntrackedFiles no
 
 alias dfs='dotfiles status'

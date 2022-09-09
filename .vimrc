@@ -82,7 +82,7 @@ else
     " scrolling in insert mode on macOS terminal inserts an escape code based
     " on the position, which we are not able to predict in a remap
     set mouse=nvc
-    if has('mac')
+    if has('mac') && !has('nvim')
         " have mouse selection update while dragging
         set ttymouse=sgr
     end
@@ -98,7 +98,9 @@ set visualbell
 set hidden
 
 " Diable encryption (:X) -- don't want this happening accidently
-set key=
+if !has('nvim')
+    set key=
+end
 
 " Automatically read files when they are changed
 set autoread
@@ -120,7 +122,9 @@ set path+=**
 set complete-=i
 
 " So that '^[O' creates a new line above much quicker in console vim
-set noesckeys
+if !has('nvim')
+    set noesckeys
+end
 
 " Also set the timeout for commands to a fair amount shorter
 set timeoutlen=250
@@ -396,7 +400,7 @@ let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
 
 " Fix macvim python problems
-if has('mac')
+if has('mac') && !has('nvim')
   if has('python3')
       "set pythonthreedll=/usr/local/opt/python/Frameworks/Python.framework/Versions/3.8/Python
       "set pythonthreehome=/usr/local/opt/python/Frameworks/Python.framework/Versions/3.8/
