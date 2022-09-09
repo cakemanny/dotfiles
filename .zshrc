@@ -92,6 +92,8 @@ export VISUAL=vim
 export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
 export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse.engineType=Node"
 export GOPATH=$HOME/.gopath
+export NVM_DIR="$HOME/.nvm"
+
 # TODO: Migrate to .gopath
 if [[ "${HOST/.*}" == "tsw-dan-laptop" ]]; then
     export GOPATH=$HOME/src/go
@@ -301,6 +303,7 @@ alias recent-branches="git for-each-ref --sort=-committerdate refs/heads/ | sed 
 alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*/||" | fzf)'
 alias pip='test -n "$VIRTUAL_ENV" && env pip'
 alias mutt='neomutt'
+alias doco='docker compose'
 
 # because I'm so vimmed
 alias ':e'='vim'
@@ -343,3 +346,16 @@ compdef _kitty kitty
 
 # generate with helm completion zsh
 [[ -f $HOME/.completions.d/helm.inc.zsh ]] && source $HOME/.completions.d/helm.inc.zsh
+
+## stuff for nvm
+#[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+# stuff for pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+if [[ -d $PYENV_ROOT ]]; then
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init - zsh)"
+fi
