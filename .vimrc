@@ -1,58 +1,61 @@
 "set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" https://github.com/junegunn/vim-plug
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'dense-analysis/ale'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dense-analysis/ale'
 " Maybe consider fzf at some point?
 " junegunn/fzf.vim
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'Raimondi/delimitMate' " autoclose delimiters
-"Plugin 'kana/vim-smartinput' " autoclose delimiters
-Plugin 'kana/vim-textobj-user' " required for vim-textobj-indent and -line
-Plugin 'kana/vim-textobj-indent'
-Plugin 'kana/vim-textobj-line'
-Plugin 'wellle/targets.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'Raimondi/delimitMate' " autoclose delimiters
+"Plug 'kana/vim-smartinput' " autoclose delimiters
+Plug 'kana/vim-textobj-user' " required for vim-textobj-indent and -line
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'wellle/targets.vim'
 
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'roxma/nvim-yarp' " required for deoplete
-"Plugin 'roxma/vim-hug-neovim-rpc' " required for deoplete
-"Plugin 'zchee/deoplete-go'
-"Plugin 'direnv/direnv.vim'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp' " required for deoplete
+"Plug 'roxma/vim-hug-neovim-rpc' " required for deoplete
+"Plug 'zchee/deoplete-go'
+"Plug 'direnv/direnv.vim'
 
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language specific plugins
-"Plugin 'tpope/vim-fireplace' " clojure
-"Plugin 'kongo2002/fsharp-vim'
-Plugin 'vim-scripts/indenthaskell.vim'
-"Plugin 'Shutnik/jshint2.vim'
-" Plugin 'rust-lang/rust.vim'
-"Plugin 'OrangeT/vim-csharp'
-Plugin 'fatih/vim-go'
-" Plugin 'b4winckler/vim-objc'
-Plugin 'Vimjas/vim-python-pep8-indent'
-"Plugin 'derekwyatt/vim-scala'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-"Plugin 'MaxMEllon/vim-jsx-pretty'
-"Plugin 'neoclide/vim-jsx-improve'
-Plugin 'neomutt/neomutt.vim'
-"Plugin 'Quramy/tsuquyomi' " a typescript autocompletion thing
-"Plugin 'leafgarland/typescript-vim'
-"Plugin 'hylang/vim-hy'
-Plugin 'hashivim/vim-terraform'
-Plugin 'google/vim-jsonnet'
+"Plug 'tpope/vim-fireplace' " clojure
+"Plug 'kongo2002/fsharp-vim'
+Plug 'vim-scripts/indenthaskell.vim'
+"Plug 'Shutnik/jshint2.vim'
+" Plug 'rust-lang/rust.vim'
+"Plug 'OrangeT/vim-csharp'
+Plug 'fatih/vim-go'
+" Plug 'b4winckler/vim-objc'
+Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'derekwyatt/vim-scala'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'neoclide/vim-jsx-improve'
+Plug 'neomutt/neomutt.vim'
+"Plug 'Quramy/tsuquyomi' " a typescript autocompletion thing
+"Plug 'leafgarland/typescript-vim'
+"Plug 'hylang/vim-hy'
+Plug 'hashivim/vim-terraform'
+Plug 'google/vim-jsonnet'
 
-call vundle#end()
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
 
 set encoding=utf8
 
