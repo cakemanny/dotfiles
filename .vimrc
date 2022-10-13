@@ -449,16 +449,17 @@ function! CloseHiddenBuffers()
   endwhile
 endfun
 
-" Ripgrep or The Silver Searcher
-"if executable('rg')
-  "set grepprg=rg\ --color\ never\ --no-heading
-  "let g:ctrlp_user_command = 'rg %s --color never --files'
-  "let g:ctrlp_use_caching = 0
-"elseif executable('ag')
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
+endif
 
+" Ripgrep or The Silver Searcher
+if executable('rg')
+  "set grepprg=rg\ --color\ never\ --no-heading
+  let g:ctrlp_user_command = 'rg %s --color never --files'
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
   " Use ag in CtrlP for listing files.
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
