@@ -333,6 +333,7 @@ set tag=tags;/
 " TODO: use augroups
 autocmd FileType make setlocal noexpandtab
 autocmd FileType go setlocal noexpandtab
+autocmd BufWritePost *.go :silent !goimports -w %
 autocmd FileType diff color desert
 autocmd FileType clojure let b:delimitMate_quotes = "\""
 
