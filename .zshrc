@@ -294,7 +294,7 @@ alias dfcommit='dotfiles commit'
 
 
 alias recent-branches="git for-each-ref --sort=-committerdate refs/heads/ | sed 's|.*/||'"
-alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*/||" | fzf)'
+alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*refs/heads/||" | fzf)'
 alias pip='test -n "$VIRTUAL_ENV" && env pip'
 alias mutt='neomutt'
 alias doco='docker compose'
