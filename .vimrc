@@ -38,7 +38,9 @@ Plug 'vim-scripts/indenthaskell.vim'
 "Plug 'Shutnik/jshint2.vim'
 " Plug 'rust-lang/rust.vim'
 "Plug 'OrangeT/vim-csharp'
-Plug 'fatih/vim-go'
+if 0
+    Plug 'fatih/vim-go'
+endif
 " Plug 'b4winckler/vim-objc'
 Plug 'Vimjas/vim-python-pep8-indent'
 "Plug 'derekwyatt/vim-scala'
