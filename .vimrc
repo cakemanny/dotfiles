@@ -438,6 +438,12 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver']
+if hostname() !~ '^bm-dan-laptop'
+    let g:coc_global_extensions += ['coc-git', 'coc-rls']
+endif
+
+
 " useful functions
 function! CloseHiddenBuffers()
   let i = 0
