@@ -297,7 +297,14 @@ alias recent-branches="git for-each-ref --sort=-committerdate refs/heads/ | sed 
 alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*refs/heads/||" | fzf)'
 alias pip='test -n "$VIRTUAL_ENV" && env pip'
 alias mutt='neomutt'
-alias doco='docker compose'
+# alias doco='docker compose'
+function doco {
+    if [[ $PWD == $HOME/src/local-dev-stack* ]] && [[ -x $HOME/src/local-dev-stack/doco.sh ]]; then
+        $HOME/src/local-dev-stack/doco.sh "$@"
+    else
+        docker compose "$@"
+    fi
+}
 
 # because I'm so vimmed
 alias ':e'='vim'
