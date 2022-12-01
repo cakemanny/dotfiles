@@ -48,6 +48,7 @@ brew "haskell-stack"
 # Github hub
 brew "hub"
 brew "gh"
+brew "act"  # run github actions locally
 brew "imagemagick"
 #brew "ivy"
 #brew "jbig2dec"
@@ -59,6 +60,7 @@ brew "gron"
 brew "kubernetes-cli"
 brew "kubeseal"
 brew "stern"
+brew "skaffold" if hostname.start_with?("bm-dan-laptop")
 brew "fluxctl" if hostname.start_with?("cadmus")
 brew "awscli"
 brew "aws-cdk"
@@ -118,6 +120,7 @@ brew "zstd"
 
 # ==== CASKS ====
 cask "basictex"
+cask "background-music" if hostname.start_with?("bm-dan-laptop")
 cask "calibre" unless hostname.start_with?("bm-dan-laptop")
 cask "kitty"
 cask "xquartz"

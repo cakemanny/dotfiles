@@ -401,8 +401,12 @@ let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
 " ## ALE
 let g:ale_linters = {'python': ['flake8']}
-let g:ale_fixers = {'javascript': ['prettier'], 'css': ['prettier']}
-let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+            \ 'javascript': ['prettier'],
+            \ 'css': ['prettier'],
+            \ 'typescript': ['prettier'],
+            \ }
+let g:ale_fix_on_save = 1
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
 
@@ -415,6 +419,9 @@ if has('mac') && !has('nvim')
       set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
       set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
   endif
+endif
+if has('nvim')
+    let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 endif
 
 " avoid |vim-go| conflict with syntastic
@@ -436,16 +443,20 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " ## coc
+let g:coc_node_path = $HOMEBREW_PREFIX . '/bin/node'
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
+nnoremap <silent> <Leader>rn <Plug>(coc-rename)
+
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver']
 if hostname() !~ '^bm-dan-laptop'
     let g:coc_global_extensions += ['coc-git', 'coc-rls']
 endif
-
 
 " useful functions
 function! CloseHiddenBuffers()

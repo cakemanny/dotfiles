@@ -1,4 +1,5 @@
 {
+    "jedi.enable": true,
     "languageserver": {
         "golang":{
             "command": "$GOPATH/bin/gopls",
