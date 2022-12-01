@@ -1,5 +1,8 @@
 # vim: syntax=ruby filetype=ruby
 
+require "Socket"
+hostname = Socket.gethostname
+
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -16,11 +19,12 @@ brew "ocaml"
 brew "camlp4"
 brew "cmake"
 brew "colordiff"
-brew "commitizen"
+brew "commitizen" if hostname.start_with?("bm-dan-laptop")
 brew "ctags"
 brew "curl"
 brew "httpie"
 brew "coreutils"
+brew "dhall-lang"
 # Auto set environment variables when entering directories
 brew "direnv"
 brew "emacs"
@@ -55,15 +59,16 @@ brew "gron"
 brew "kubernetes-cli"
 brew "kubeseal"
 brew "stern"
-brew "fluxctl"
+brew "fluxctl" if hostname.start_with?("cadmus")
 brew "awscli"
 brew "aws-cdk"
+brew "cdktf"
 #brew "leiningen"
 # great embedded key value database
 brew "leveldb"
 brew "libxml2"
-brew "llvm"
-brew "maven"
+brew "llvm"  if hostname.start_with?("cadmus")
+brew "maven" if hostname.start_with?("cadmus")
 #brew "mono"
 brew "mosh"
 brew "mongosh"
@@ -106,14 +111,14 @@ brew "neovim"
 brew "w3m"
 brew "wget"
 brew "yarn"
-brew "youtube-dl"
+brew "youtube-dl" unless hostname.start_with?("bm-dan-laptop")
 brew "zsh"
 # very good and fast compression
 brew "zstd"
 
 # ==== CASKS ====
 cask "basictex"
-cask "calibre"
+cask "calibre" unless hostname.start_with?("bm-dan-laptop")
 cask "kitty"
 cask "xquartz"
 cask "google-cloud-sdk"

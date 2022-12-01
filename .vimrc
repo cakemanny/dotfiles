@@ -52,6 +52,7 @@ Plug 'neomutt/neomutt.vim'
 "Plug 'hylang/vim-hy'
 Plug 'hashivim/vim-terraform'
 Plug 'google/vim-jsonnet'
+Plug 'vmchale/dhall-vim'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
