@@ -406,7 +406,11 @@ let g:ale_fixers = {
             \ 'css': ['prettier'],
             \ 'typescript': ['prettier'],
             \ }
-let g:ale_fix_on_save = 1
+if hostname() =~ "^bm-dan-laptop"
+    let g:ale_fix_on_save = 1
+else
+    let g:ale_fix_on_save = 0
+endif
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
 
