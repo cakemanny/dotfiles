@@ -290,7 +290,7 @@ if $COLORTERM == 'truecolor' && $TMUX == ''
                 \ "#83afd8", "#bc93b6", "#37e5e7", "#f1f1ef"
                 \]
 endif
-if $TERM == 'xterm-kitty'
+if $TERM == 'xterm-kitty' && !has('nvim')
     let &t_ut=''
 endif
 if has('win32') && has('gui_running')
