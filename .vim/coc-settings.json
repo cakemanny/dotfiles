@@ -5,6 +5,10 @@
             "command": "$GOPATH/bin/gopls",
             "rootPatterns": ["go.mod"],
             "filetypes": ["go"]
+        },
+        "dhall":{
+            "command": "dhall-lsp-server",
+            "filetypes": ["dhall"]
         }
     },
     "diagnostic.virtualText": true
