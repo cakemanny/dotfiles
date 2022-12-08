@@ -16,7 +16,7 @@ brew "automake"
 brew "binutils"
 #brew "boost"
 brew "ocaml"
-brew "camlp4"
+brew "camlp5"
 brew "cmake"
 brew "colordiff"
 brew "commitizen" if hostname.start_with?("bm-dan-laptop")
