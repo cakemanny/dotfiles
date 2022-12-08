@@ -41,6 +41,7 @@ Plug 'vim-scripts/indenthaskell.vim'
 if 0
     Plug 'fatih/vim-go'
 endif
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " Plug 'b4winckler/vim-objc'
 Plug 'Vimjas/vim-python-pep8-indent'
 "Plug 'derekwyatt/vim-scala'
