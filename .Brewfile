@@ -81,7 +81,7 @@ brew "notmuch"
 brew "neomutt"
 brew "nginx"
 brew "nmap"
-brew "nss"
+brew "nss" if hostname.start_with?("bm-dan-laptop")
 brew "node"
 brew "deno"
 brew "opam"
