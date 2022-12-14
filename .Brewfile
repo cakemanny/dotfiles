@@ -123,6 +123,7 @@ if hostname.start_with?("bm-dan-laptop")
   brew "bash"
   brew "black"
   brew "go@1.18"
+  brew "just"
   brew "make"
   brew "nvm"
   brew "openssl@3"
