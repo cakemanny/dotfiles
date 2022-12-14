@@ -461,7 +461,7 @@ nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver']
 if hostname() !~ '^bm-dan-laptop'
-    let g:coc_global_extensions += ['coc-git', 'coc-rls']
+    let g:coc_global_extensions += ['coc-git', 'coc-rust-analyzer']
 endif
 
 " useful functions
