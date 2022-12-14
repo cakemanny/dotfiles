@@ -2,6 +2,7 @@
 
 require "Socket"
 hostname = Socket.gethostname
+is_work_machine = hostname.start_with?("bm-dan-laptop")
 
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -21,6 +22,8 @@ brew "cmake"
 brew "colordiff"
 brew "ctags"
 brew "curl"
+# The cue configuration language
+brew "cue"
 brew "xh" # like httpie
 brew "coreutils"
 brew "dhall-json"
@@ -96,8 +99,9 @@ brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
 brew "rlwrap"
 brew "ruby", link: true
-brew "sbt"
-brew "scala" unless hostname.start_with?("bm-dan-laptop")
+brew "sbt" unless is_work_machine
+brew "scala" unless is_work_machine
+brew "clojure" unless is_work_machine
 brew "shellcheck"
 # A much faster replacement to grep esp for programming projects
 brew "the_silver_searcher"
@@ -111,12 +115,12 @@ brew "w3m"
 brew "watch"
 brew "wget"
 brew "yarn"
-brew "youtube-dl" unless hostname.start_with?("bm-dan-laptop")
+brew "youtube-dl" unless is_work_machine
 brew "zsh"
 # very good and fast compression
 brew "zstd"
 
-if hostname.start_with?("bm-dan-laptop")
+if is_work_machine
   brew "bash"
   brew "black"
   brew "commitizen"
@@ -136,8 +140,8 @@ end
 
 # ==== CASKS ====
 cask "basictex"
-cask "background-music" if hostname.start_with?("bm-dan-laptop")
-cask "calibre" unless hostname.start_with?("bm-dan-laptop")
+cask "background-music" if is_work_machine
+cask "calibre" unless is_work_machine
 cask "kitty"
 cask "xquartz"
 cask "google-cloud-sdk"
