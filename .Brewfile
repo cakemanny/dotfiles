@@ -112,6 +112,7 @@ brew "transmission-cli"
 brew "vim"
 brew "neovim"
 brew "w3m"
+brew "watch"
 brew "wget"
 brew "yarn"
 brew "youtube-dl" unless hostname.start_with?("bm-dan-laptop")
