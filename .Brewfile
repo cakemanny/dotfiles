@@ -19,7 +19,6 @@ brew "ocaml"
 brew "camlp5"
 brew "cmake"
 brew "colordiff"
-brew "commitizen" if hostname.start_with?("bm-dan-laptop")
 brew "ctags"
 brew "curl"
 brew "xh" # like httpie
@@ -61,7 +60,6 @@ brew "gron"
 brew "kubernetes-cli"
 brew "kubeseal"
 brew "stern"
-brew "skaffold" if hostname.start_with?("bm-dan-laptop")
 brew "fluxctl" if hostname.start_with?("cadmus")
 brew "awscli"
 brew "aws-cdk"
@@ -74,14 +72,12 @@ brew "llvm"  if hostname.start_with?("cadmus")
 brew "maven" if hostname.start_with?("cadmus")
 #brew "mono"
 brew "mosh"
-brew "mongosh" if hostname.start_with?("bm-dan-laptop")
 brew "mycli"
 brew "mysql"
 brew "notmuch"
 brew "neomutt"
 brew "nginx"
 brew "nmap"
-brew "nss" if hostname.start_with?("bm-dan-laptop")
 brew "node"
 brew "deno"
 brew "opam"
@@ -123,14 +119,18 @@ brew "zstd"
 if hostname.start_with?("bm-dan-laptop")
   brew "bash"
   brew "black"
+  brew "commitizen"
   brew "go@1.18"
   brew "just"
   brew "make"
+  brew "mongosh"
+  brew "nss"
   brew "nvm"
   brew "openssl@3"
   brew "postgresql@12"
   brew "pyenv"
   brew "pyenv-virtualenv"
+  brew "skaffold"
   brew "volta"
 end
 
