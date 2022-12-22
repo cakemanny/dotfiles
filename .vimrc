@@ -23,10 +23,6 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'wellle/targets.vim'
 
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'roxma/nvim-yarp' " required for deoplete
-"Plug 'roxma/vim-hug-neovim-rpc' " required for deoplete
-"Plug 'zchee/deoplete-go'
 "Plug 'direnv/direnv.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -35,7 +31,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'tpope/vim-fireplace' " clojure
 "Plug 'kongo2002/fsharp-vim'
 Plug 'vim-scripts/indenthaskell.vim'
-"Plug 'Shutnik/jshint2.vim'
 " Plug 'rust-lang/rust.vim'
 "Plug 'OrangeT/vim-csharp'
 if 0
@@ -166,7 +161,7 @@ noremap <Leader>3 :b3<CR>
 noremap <Leader>4 :b4<CR>
 noremap <Leader>5 :b5<CR>
 
-" Ctrl-zfor saving!
+" Ctrl-z for saving!
 noremap     <C-z> :update<CR>
 inoremap    <C-z> <C-o>:update<CR>
 
@@ -211,29 +206,9 @@ vnoremap    )   %
 nnoremap <Leader>h  :nohlsearch<CR>
 " Toggle relative numbering
 nnoremap <Leader>rn :set relativenumber!<CR>
-" Quote a word
-nnoremap <Leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <Leader>' viw<esc>a'<esc>hbi'<esc>lel
-" Quote a selection
-vnoremap <Leader>" <esc>`>a"<esc>`<i"<esc>`>2<right>
-vnoremap <Leader>' <esc>`>a'<esc>`<i'<esc>`>2<right>
-vnoremap <Leader>} <esc>`>a}<esc>`<i{<esc>`>f}<left>
-vnoremap <Leader>{ <esc>`>a<space>}<esc>`<i{<space><esc>`>f}<left>
-vnoremap <Leader>) <esc>`>a)<esc>`<i(<esc>`>f)<left>
-vnoremap <Leader>( <esc>`>a<space>)<esc>`<i(<space><esc>`>f)<left>
-vnoremap <Leader>] <esc>`>a]<esc>`<i[<esc>`>f]<left>
-vnoremap <Leader>[ <esc>`>a<space>]<esc>`<i[<space><esc>`>f]<left>
 
 " Edit our .vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
-
-" Taken from Shawn Biddle's Vim Training Class
-
-"inoremap <Leader>' ''<left>
-"inoremap <Leader>" ""<left>
-"inoremap <Leader>( ()<left>
-"inoremap <Leader>[ []<left>
-"inoremap <Leader>{ {}<left>
 
 " make , a text object
 nnoremap di, f,dT,
@@ -348,9 +323,6 @@ let g:netrw_bufsettings = 'nomodifiable nomodified number nobuflisted nowrap rea
 " open netrw
 nnoremap <Leader>ex :Explore<CR>
 
-"" JSHint configuration
-"let jshint2_command = '~/node_modules/jshint/bin/jshint'
-
 "" CtrlP Configuration
 "let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project)'
         ""\ 'dir': '\v[\/]\.(git|hg|svn)$\|target\|node_modules\|bower_components',
@@ -369,12 +341,6 @@ let g:ctrlp_user_command = {
 " work from current dir - default is 'ra'
 let g:ctrlp_working_path_mode = ''
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-
-" Updates for OmniSharp:
-let g:OmniSharp_server_type = 'roslyn'
-let g:OmniSharp_host = "http://localhost:2000"
-let g:OmniSharp_timeout = 1
 set noshowmatch
 set completeopt=longest,menuone,preview
 set splitbelow
@@ -420,12 +386,6 @@ let g:go_template_autocreate = 0
 "let g:go_def_mode='gopls'
 "let g:go_info_mode='gopls'
 
-" Don't enable deoplete straight away - makes it slow
-let g:deoplete#enable_at_startup = 0
-" settings for deoplete-go
-let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
 " ## coc
 let g:coc_node_path = $HOMEBREW_PREFIX . '/bin/node'
 
@@ -439,7 +399,7 @@ nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml']
 if hostname() !~ '^bm-dan-laptop'
-    let g:coc_global_extensions += ['coc-git', 'coc-rust-analyzer']
+    let g:coc_global_extensions += ['coc-rust-analyzer']
 endif
 
 " useful functions
