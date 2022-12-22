@@ -266,10 +266,6 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 
-" Control the Syntastic Plugin
-noremap <silent> <Leader>e :Errors<CR>
-noremap <Leader>s :SyntasticToggleMode<CR>
-
 " -- -- Display Stuff -- --
 
 color FreshCut
@@ -382,24 +378,6 @@ let g:OmniSharp_timeout = 1
 set noshowmatch
 set completeopt=longest,menuone,preview
 set splitbelow
-
-" Syntastic options
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cs_checkers = ['code_checker']
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14'
-
-" pylint is sooo slow, only run pyflakes for each buffer save
-let g:syntastic_python_checkers = ['pyflakes']
-
-let g:syntastic_go_checkers = ['go', 'govet']
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_ocaml_checkers = ['merlin']
-" ignore ocamlyacc and ocamllex files
-let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
 " ## ALE
 let g:ale_linters = {'python': ['flake8']}
