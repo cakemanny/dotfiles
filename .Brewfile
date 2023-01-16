@@ -41,6 +41,7 @@ brew "ghostscript"
 brew "git"
 # OpenGL windowing library
 brew "glfw"
+brew "graphviz"
 brew "libgpg-error"
 brew "gnupg"
 #brew "gnuplot"
@@ -84,7 +85,7 @@ brew "nmap"
 brew "node"
 brew "deno"
 brew "opam"
-#brew "pandoc"
+brew "pandoc"
 brew "pgcli"
 # pager for psql / pgcli / mysql / etc
 brew "pspg"
@@ -140,7 +141,6 @@ end
 
 # ==== CASKS ====
 cask "basictex"
-cask "background-music" if is_work_machine
 cask "calibre" unless is_work_machine
 cask "kitty"
 cask "xquartz"
