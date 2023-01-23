@@ -48,6 +48,8 @@ brew "gnupg"
 brew "go"
 # Used for SASL auth with e.g. Gmail
 brew "gsasl"
+# Load testing tool
+brew "hey"
 brew "haskell-stack"
 # Github hub
 brew "hub"
@@ -97,7 +99,7 @@ brew "pspg"
 brew "python"
 brew "python@3.8"
 brew "reattach-to-user-namespace"
-brew "redis", restart_service: true
+brew "redis", restart_service: true unless is_work_machine
 brew "rlwrap"
 brew "ruby", link: true
 brew "sbt" unless is_work_machine
@@ -126,7 +128,6 @@ if is_work_machine
   brew "black"
   brew "commitizen"
   brew "go@1.18"
-  brew "just"
   brew "make"
   brew "mongosh"
   brew "nss"
@@ -141,6 +142,7 @@ end
 
 # ==== CASKS ====
 cask "basictex"
+cask "flutter" if is_work_machine
 cask "calibre" unless is_work_machine
 cask "kitty"
 cask "xquartz"
