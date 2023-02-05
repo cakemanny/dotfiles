@@ -401,9 +401,9 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
 nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml', 'coc-rust-analyzer']
 if hostname() !~ '^bm-dan-laptop'
-    let g:coc_global_extensions += ['coc-rust-analyzer']
+    let g:coc_global_extensions += []
 endif
 
 " useful functions
