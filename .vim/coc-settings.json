@@ -9,6 +9,10 @@
         "dhall":{
             "command": "dhall-lsp-server",
             "filetypes": ["dhall"]
+        },
+        "zig": {
+            "command": "zls",
+            "filetypes": ["zig"]
         }
     },
     "diagnostic.virtualText": true

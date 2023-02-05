@@ -116,6 +116,7 @@ brew "watch"
 brew "wget"
 brew "yarn"
 brew "youtube-dl" unless is_work_machine
+brew "zig"
 brew "zsh"
 # very good and fast compression
 brew "zstd"
