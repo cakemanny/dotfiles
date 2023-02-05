@@ -313,6 +313,9 @@ autocmd BufWritePost *.go :silent !goimports -w %
 autocmd FileType diff color desert
 autocmd FileType clojure let b:delimitMate_quotes = "\""
 
+" POSIX /bin/sh extensions should be highlighted. e.g. $(...)
+let g:is_posix = 1
+
 " netrw configuration
 "let g:netrw_banner      = 0
 let g:netrw_preview     = 1  " vsplit preview
