@@ -72,7 +72,7 @@ brew "cdktf"
 # great embedded key value database
 brew "leveldb"
 brew "libxml2"
-brew "llvm"  if hostname.start_with?("cadmus")
+#brew "llvm"  if hostname.start_with?("cadmus")
 brew "maven" if hostname.start_with?("cadmus")
 #brew "mono"
 brew "mosh"
@@ -83,7 +83,6 @@ brew "neomutt"
 brew "nginx"
 brew "nmap"
 brew "node"
-brew "deno"
 brew "opam"
 brew "pandoc"
 brew "pgcli"
@@ -126,6 +125,7 @@ if is_work_machine
   brew "bash"
   brew "black"
   brew "commitizen"
+  brew "deno"
   brew "go@1.18"
   brew "just"
   brew "make"
