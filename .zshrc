@@ -102,7 +102,7 @@ export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export ASPNETCORE_ENVIRONMENT=Development
 
-source $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 # to fix ocaml upgrade
 # https://github.com/ocaml/opam/issues/3708#issuecomment-448549584
 

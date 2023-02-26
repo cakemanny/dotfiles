@@ -1,5 +1,4 @@
 {
-    "jedi.enable": true,
     "languageserver": {
         "golang":{
             "command": "$GOPATH/bin/gopls",
@@ -13,7 +12,12 @@
         "zig": {
             "command": "zls",
             "filetypes": ["zig"]
+        },
+        "ocaml":{
+            "command": "ocamllsp",
+            "filetypes": ["ocaml"]
         }
     },
-    "diagnostic.virtualText": true
+    "diagnostic.virtualText": true,
+    "inlayHint.enable": false
 }

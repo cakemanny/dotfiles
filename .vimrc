@@ -308,11 +308,13 @@ set tag=tags;/
 
 " Most indent settings are now handled by vim-sleuth
 " TODO: use augroups
-autocmd FileType make setlocal noexpandtab
+autocmd FileType clojure let b:delimitMate_quotes = "\""
+autocmd FileType diff color desert
 autocmd FileType go setlocal noexpandtab
 autocmd BufWritePost *.go :silent !goimports -w %
-autocmd FileType diff color desert
-autocmd FileType clojure let b:delimitMate_quotes = "\""
+autocmd FileType make setlocal noexpandtab
+" Avoid auto-wrapping long lines
+autocmd FileType ocaml setlocal fo-=t fo+=croql
 
 " POSIX /bin/sh extensions should be highlighted. e.g. $(...)
 let g:is_posix = 1
@@ -438,7 +440,6 @@ endif
 " bind K to grep word under cursor
 nnoremap K yiw:grep! "\b<C-R>+\b"<CR>:cw<CR>
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
 
 "function! SendQuery()
 "  normal! `<"ay`>
