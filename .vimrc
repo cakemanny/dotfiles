@@ -352,7 +352,7 @@ set completeopt=longest,menuone,preview
 set splitbelow
 
 " ## ALE
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = {'python': ['flake8'], 'haskell':[]}
 let g:ale_fixers = {
             \ 'javascript': ['prettier'],
             \ 'css': ['prettier'],
@@ -363,6 +363,8 @@ if hostname() =~ "^bm-dan-laptop"
 else
     let g:ale_fix_on_save = 0
 endif
+let g:ale_disable_lsp = 1
+
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
 

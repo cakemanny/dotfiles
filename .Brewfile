@@ -37,6 +37,7 @@ brew "fzf"
 brew "gcc"
 # Glascow Haskell Compiler - not installed by default as it's rather large
 #brew "ghc"
+brew "ghcup"
 brew "ghostscript"
 brew "git"
 # OpenGL windowing library

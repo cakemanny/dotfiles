@@ -80,7 +80,7 @@ fi
 
 # - - - - - - Environment - - - - - -
 
-export PATH=$PATH:~/.cabal/bin:~/.cargo/bin
+export PATH=$PATH:~/.ghcup/bin:~/.cargo/bin
 #export JAVA_HOME=$(/usr/libexec/java_home)
 #export SCALA_HOME=/usr/local/opt/scala/idea
 #export TOMCAT_HOME=/usr/local/apache-tomcat

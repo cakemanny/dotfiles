@@ -16,8 +16,14 @@
         "ocaml":{
             "command": "ocamllsp",
             "filetypes": ["ocaml"]
+        },
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal"],
+            "filetypes": ["haskell", "lhaskell"]
         }
     },
-    "diagnostic.virtualText": true,
+    "diagnostic.virtualText": false,
     "inlayHint.enable": false
 }
