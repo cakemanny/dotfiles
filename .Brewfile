@@ -68,9 +68,6 @@ brew "kubernetes-cli"
 brew "kubeseal"
 brew "stern"
 brew "fluxctl" if hostname.start_with?("cadmus")
-brew "awscli"
-brew "aws-cdk"
-brew "cdktf"
 #brew "leiningen"
 # great embedded key value database
 brew "leveldb"
@@ -127,6 +124,10 @@ brew "zsh"
 brew "zstd"
 
 if is_work_machine
+  brew "awscli"
+  brew "aws-cdk"
+  brew "cdktf"
+
   brew "bash"
   brew "black"
   brew "commitizen"
