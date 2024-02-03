@@ -103,6 +103,7 @@ brew "reattach-to-user-namespace"
 brew "redis", restart_service: true unless is_work_machine
 brew "rlwrap"
 brew "ruby", link: true
+brew "rustup-init"
 brew "sbt" unless is_work_machine
 brew "scala" unless is_work_machine
 brew "clojure" unless is_work_machine
