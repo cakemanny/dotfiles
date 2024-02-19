@@ -1,5 +1,5 @@
 {
-    "jedi.enable": true,
+    "pyright.enable": true,
     "languageserver": {
         "golang":{
             "command": "$GOPATH/bin/gopls",
@@ -11,5 +11,9 @@
             "filetypes": ["dhall"]
         }
     },
-    "diagnostic.virtualText": true
+    "diagnostic.virtualText": false,
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.functionReturnTypes": false,
+    "diagnostic.showUnused": true,
+    "diagnostic.hintSign": " "
 }

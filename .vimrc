@@ -28,6 +28,7 @@ Plug 'wellle/targets.vim'
 "Plug 'roxma/vim-hug-neovim-rpc' " required for deoplete
 "Plug 'zchee/deoplete-go'
 "Plug 'direnv/direnv.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -56,7 +57,6 @@ Plug 'neomutt/neomutt.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'google/vim-jsonnet'
 Plug 'vmchale/dhall-vim'
-Plug 'NoahTheDuke/vim-just'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -402,11 +402,14 @@ let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_ignore_files = ['\m\c\.ml[ly]$']
 
 " ## ALE
-let g:ale_linters = {'python': ['flake8']}
+" We use coc for lsp
+let g:ale_disable_lsp = 1
+let g:ale_linters = {'python': ['flake8'], 'typescript': ['eslint']}
 let g:ale_fixers = {
             \ 'javascript': ['prettier'],
             \ 'css': ['prettier'],
             \ 'typescript': ['prettier'],
+            \ 'typescriptreact': ['prettier'],
             \ }
 if hostname() =~ "^bm-dan-laptop"
     let g:ale_fix_on_save = 1
@@ -415,6 +418,9 @@ else
 endif
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
+
+" 
+let g:ale_go_golangci_lint_package = 1
 
 " Fix macvim python problems
 if has('mac') && !has('nvim')
@@ -427,7 +433,7 @@ if has('mac') && !has('nvim')
   endif
 endif
 if has('nvim')
-    let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
+  let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 endif
 
 " avoid |vim-go| conflict with syntastic
@@ -448,6 +454,11 @@ let g:deoplete#enable_at_startup = 0
 let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
+" ## TreeSitter
+if has('nvim')
+  lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+endif
+
 " ## coc
 let g:coc_node_path = $HOMEBREW_PREFIX . '/bin/node'
 
@@ -455,11 +466,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gh :call CocActionAsync('doHover')<CR>
 
 nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
 nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml', 'coc-rust-analyzer', 'coc-pyright']
 if hostname() !~ '^bm-dan-laptop'
     let g:coc_global_extensions += ['coc-git']
 endif
