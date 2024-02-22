@@ -72,6 +72,7 @@ brew "fluxctl" if hostname.start_with?("cadmus")
 brew "awscli"
 brew "aws-cdk"
 brew "cdktf"
+brew "localstack"
 #brew "leiningen"
 # great embedded key value database
 brew "leveldb"
@@ -145,6 +146,7 @@ if is_work_machine
   brew "pyenv-virtualenv"
   brew "skaffold"
   brew "tree"
+  brew "uv"
   brew "volta"
 end
 
