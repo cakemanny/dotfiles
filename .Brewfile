@@ -66,7 +66,11 @@ brew "jid"
 brew "gron"
 brew "kubernetes-cli"
 brew "kubeseal"
-brew "stern"
+brew "skaffold"
+brew "kompose"  # converts docker compose to k8s manifests
+brew "kubeconform"
+brew "kind"
+brew "stern"  # for tailing multiple pod logs simulteously
 brew "fluxctl" if hostname.start_with?("cadmus")
 #brew "leiningen"
 # great embedded key value database
@@ -141,7 +145,6 @@ if is_work_machine
   brew "postgresql@12"
   brew "pyenv"
   brew "pyenv-virtualenv"
-  brew "skaffold"
   brew "volta"
 end
 
