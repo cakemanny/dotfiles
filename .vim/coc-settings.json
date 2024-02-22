@@ -1,3 +1,4 @@
+// vim: filetype=jsonc
 {
     "pyright.enable": true,
     "languageserver": {
@@ -9,11 +10,27 @@
         "dhall":{
             "command": "dhall-lsp-server",
             "filetypes": ["dhall"]
+        },
+        "zig": {
+            "command": "zls",
+            "filetypes": ["zig"]
+        },
+        "ocaml":{
+            "command": "ocamllsp",
+            "filetypes": ["ocaml"]
+        },
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal"],
+            "filetypes": ["haskell", "lhaskell"]
         }
     },
     "diagnostic.virtualText": false,
     "pyright.inlayHints.variableTypes": false,
     "pyright.inlayHints.functionReturnTypes": false,
     "diagnostic.showUnused": true,
-    "diagnostic.hintSign": " "
+    "diagnostic.hintSign": " ",
+    // Not sure about this one
+    "inlayHint.enable": false
 }

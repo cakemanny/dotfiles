@@ -38,6 +38,7 @@ brew "fzf"
 brew "gcc"
 # Glascow Haskell Compiler - not installed by default as it's rather large
 #brew "ghc"
+brew "ghcup"
 brew "ghostscript"
 brew "git"
 # OpenGL windowing library
@@ -77,7 +78,7 @@ brew "localstack"
 # great embedded key value database
 brew "leveldb"
 brew "libxml2"
-brew "llvm"  if hostname.start_with?("cadmus")
+#brew "llvm"  if hostname.start_with?("cadmus")
 brew "maven" if hostname.start_with?("cadmus")
 #brew "mono"
 brew "mosh"
@@ -88,7 +89,7 @@ brew "neomutt"
 brew "nginx"
 brew "nmap"
 brew "node"
-brew "deno"
+brew "pnpm"
 brew "opam"
 brew "pandoc"
 brew "pgcli"
@@ -105,6 +106,7 @@ brew "reattach-to-user-namespace"
 brew "redis", restart_service: true unless is_work_machine
 brew "rlwrap"
 brew "ruby", link: true
+brew "rustup-init"
 brew "sbt" unless is_work_machine
 brew "scala" unless is_work_machine
 brew "clojure" unless is_work_machine
@@ -122,6 +124,7 @@ brew "watch"
 brew "wget"
 brew "yarn"
 brew "youtube-dl" unless is_work_machine
+brew "zig"
 brew "zsh"
 # very good and fast compression
 brew "zstd"
@@ -132,6 +135,7 @@ if is_work_machine
   brew "black"
   brew "cdk8s"
   brew "commitizen"
+  brew "deno"
   brew "go@1.18"
   brew "golangci-lint"
   brew "helm"
