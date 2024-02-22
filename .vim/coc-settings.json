@@ -1,4 +1,6 @@
+// vim: filetype=jsonc
 {
+    "pyright.enable": true,
     "languageserver": {
         "golang":{
             "command": "$GOPATH/bin/gopls",
@@ -25,5 +27,10 @@
         }
     },
     "diagnostic.virtualText": false,
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.functionReturnTypes": false,
+    "diagnostic.showUnused": true,
+    "diagnostic.hintSign": " ",
+    // Not sure about this one
     "inlayHint.enable": false
 }

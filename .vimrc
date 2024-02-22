@@ -24,6 +24,7 @@ Plug 'kana/vim-textobj-line'
 Plug 'wellle/targets.vim'
 
 "Plug 'direnv/direnv.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -51,7 +52,6 @@ Plug 'neomutt/neomutt.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'google/vim-jsonnet'
 Plug 'vmchale/dhall-vim'
-Plug 'NoahTheDuke/vim-just'
 Plug 'ziglang/zig.vim'
 
 " Initialize plugin system
@@ -352,11 +352,14 @@ set completeopt=longest,menuone,preview
 set splitbelow
 
 " ## ALE
-let g:ale_linters = {'python': ['flake8'], 'haskell':[]}
+" We use coc for lsp
+let g:ale_disable_lsp = 1
+let g:ale_linters = {'python': ['flake8'], 'haskell':[], 'typescript': ['eslint']}
 let g:ale_fixers = {
             \ 'javascript': ['prettier'],
             \ 'css': ['prettier'],
             \ 'typescript': ['prettier'],
+            \ 'typescriptreact': ['prettier'],
             \ }
 if hostname() =~ "^bm-dan-laptop"
     let g:ale_fix_on_save = 1
@@ -367,6 +370,9 @@ let g:ale_disable_lsp = 1
 
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
+
+" 
+let g:ale_go_golangci_lint_package = 1
 
 " Fix macvim python problems
 if has('mac') && !has('nvim')
@@ -379,7 +385,7 @@ if has('mac') && !has('nvim')
   endif
 endif
 if has('nvim')
-    let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
+  let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 endif
 
 " avoid |vim-go| conflict with syntastic
@@ -394,6 +400,13 @@ let g:go_template_autocreate = 0
 "let g:go_def_mode='gopls'
 "let g:go_info_mode='gopls'
 
+
+" ## TreeSitter
+if has('nvim')
+  lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+endif
+
+
 " ## coc
 let g:coc_node_path = $HOMEBREW_PREFIX . '/bin/node'
 
@@ -401,11 +414,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gh :call CocActionAsync('doHover')<CR>
 
 nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
 nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml', 'coc-rust-analyzer', 'coc-pyright']
 if hostname() !~ '^bm-dan-laptop'
     let g:coc_global_extensions += []
 endif
