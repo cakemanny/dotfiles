@@ -1,3 +1,16 @@
+" ======================================================================
+" FreshCut
+" ======================================================================
+" A Sublime Text 2 / Textmate theme.
+" Copyright (c) 2012 Dayle Rees.
+" Released under the MIT License <http://opensource.org/licenses/MIT>
+" ======================================================================
+" Find more themes at : https://github.com/daylerees/colour-schemes
+" ======================================================================"
+
+" From the 2012 version of the theme:
+" https://github.com/daylerees/colour-schemes/blob/3eb861e43f2a7b933ab07fbefe68fc92212cfba3/vim/FreshCut.vim
+
 " Vim color file
 " Converted from Textmate theme FreshCut using Coloration v0.3.2 (http://github.com/sickill/coloration)
 
