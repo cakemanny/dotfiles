@@ -25,6 +25,7 @@ Plug 'wellle/targets.vim'
 
 "Plug 'direnv/direnv.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rebelot/kanagawa.nvim'  " a treesitter compatible colorscheme
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -244,7 +245,7 @@ vno <right> <Nop>
 
 " -- -- Display Stuff -- --
 
-color FreshCut
+colorscheme FreshCut
 if has('mac')
     set guifont=Monaco
 else
@@ -403,7 +404,15 @@ let g:go_template_autocreate = 0
 
 " ## TreeSitter
 if has('nvim')
-  lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+lua << EOF
+    require'nvim-treesitter.configs'.setup {
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+        highlight = {
+            enable = true,
+            disable = { "c", "python" },
+        },
+    }
+EOF
 endif
 
 
