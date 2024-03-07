@@ -74,6 +74,7 @@ brew "skaffold"
 brew "kompose"  # converts docker compose to k8s manifests
 brew "kubeconform"
 brew "kind"
+brew "k3d"
 brew "stern"  # for tailing multiple pod logs simulteously
 brew "fluxctl" if hostname.start_with?("cadmus")
 #brew "leiningen"
@@ -113,6 +114,8 @@ brew "sbt" unless is_work_machine
 brew "scala" unless is_work_machine
 brew "clojure" unless is_work_machine
 brew "shellcheck"
+# For kubernetes projects
+brew "tilt"
 # A much faster replacement to grep esp for programming projects
 brew "the_silver_searcher"
 brew "ripgrep"
