@@ -355,13 +355,17 @@ set splitbelow
 " ## ALE
 " We use coc for lsp
 let g:ale_disable_lsp = 1
-let g:ale_linters = {'python': ['flake8'], 'haskell':[], 'typescript': ['eslint']}
+let g:ale_linters = {
+        \ 'python': ['flake8', 'ruff'],
+        \ 'haskell':[],
+        \ 'typescript': ['eslint']
+        \ }
 let g:ale_fixers = {
-            \ 'javascript': ['prettier'],
-            \ 'css': ['prettier'],
-            \ 'typescript': ['prettier'],
-            \ 'typescriptreact': ['prettier'],
-            \ }
+        \ 'javascript': ['prettier'],
+        \ 'css': ['prettier'],
+        \ 'typescript': ['prettier'],
+        \ 'typescriptreact': ['prettier'],
+        \ }
 if hostname() =~ "^bm-dan-laptop"
     let g:ale_fix_on_save = 1
 else
