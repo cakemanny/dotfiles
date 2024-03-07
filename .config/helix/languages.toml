@@ -1,0 +1,14 @@
+
+[language-server.tilt-lsp]
+command = "tilt"
+args = ["lsp", "start"]
+
+[[language]]
+name = "tiltfile"
+scope = "source.tiltfile"
+injection-regex = "tilt|tiltfile"
+roots = ["Tiltfile"]
+file-types = ["Tiltfile"]
+comment-token = "#"
+language-servers = ["tilt-lsp"]
+grammar = "python"

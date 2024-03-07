@@ -52,6 +52,8 @@ brew "go"
 brew "gsasl"
 # Load testing tool
 brew "hey"
+# modal editor in rust
+brew "helix"
 brew "haskell-stack"
 # Github hub
 brew "hub"
