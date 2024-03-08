@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 Plug 'Raimondi/delimitMate' " autoclose delimiters
 "Plug 'kana/vim-smartinput' " autoclose delimiters
 Plug 'kana/vim-textobj-user' " required for vim-textobj-indent and -line
