@@ -114,6 +114,8 @@ brew "shellcheck"
 # A much faster replacement to grep esp for programming projects
 brew "the_silver_searcher"
 brew "ripgrep"
+# For kubernetes projects
+brew "tilt"
 #brew "thrift"
 brew "tmux"
 brew "transmission-cli"
@@ -136,7 +138,8 @@ if is_work_machine
   brew "cdk8s"
   brew "commitizen"
   brew "deno"
-  brew "go@1.18"
+  brew "go@1.19"
+  brew "go@1.21"
   brew "golangci-lint"
   brew "helm"
   brew "make"
