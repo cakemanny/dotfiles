@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 Plug 'Raimondi/delimitMate' " autoclose delimiters
 "Plug 'kana/vim-smartinput' " autoclose delimiters
 Plug 'kana/vim-textobj-user' " required for vim-textobj-indent and -line
@@ -25,6 +26,7 @@ Plug 'wellle/targets.vim'
 
 "Plug 'direnv/direnv.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rebelot/kanagawa.nvim'  " a treesitter compatible colorscheme
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -244,7 +246,7 @@ vno <right> <Nop>
 
 " -- -- Display Stuff -- --
 
-color FreshCut
+colorscheme FreshCut
 if has('mac')
     set guifont=Monaco
 else
@@ -354,13 +356,17 @@ set splitbelow
 " ## ALE
 " We use coc for lsp
 let g:ale_disable_lsp = 1
-let g:ale_linters = {'python': ['flake8'], 'haskell':[], 'typescript': ['eslint']}
+let g:ale_linters = {
+        \ 'python': ['flake8', 'ruff'],
+        \ 'haskell':[],
+        \ 'typescript': ['eslint']
+        \ }
 let g:ale_fixers = {
-            \ 'javascript': ['prettier'],
-            \ 'css': ['prettier'],
-            \ 'typescript': ['prettier'],
-            \ 'typescriptreact': ['prettier'],
-            \ }
+        \ 'javascript': ['prettier'],
+        \ 'css': ['prettier'],
+        \ 'typescript': ['prettier'],
+        \ 'typescriptreact': ['prettier'],
+        \ }
 if hostname() =~ "^bm-dan-laptop"
     let g:ale_fix_on_save = 1
 else
@@ -403,7 +409,15 @@ let g:go_template_autocreate = 0
 
 " ## TreeSitter
 if has('nvim')
-  lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+lua << EOF
+    require'nvim-treesitter.configs'.setup {
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+        highlight = {
+            enable = true,
+            disable = { "c", "python" },
+        },
+    }
+EOF
 endif
 
 

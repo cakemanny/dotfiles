@@ -52,6 +52,8 @@ brew "go"
 brew "gsasl"
 # Load testing tool
 brew "hey"
+# modal editor in rust
+brew "helix"
 brew "haskell-stack"
 # Github hub
 brew "hub"
@@ -68,12 +70,13 @@ brew "gron"
 brew "kubernetes-cli"
 brew "krew"
 brew "kubeseal"
-brew "stern"
+brew "skaffold"
+brew "kompose"  # converts docker compose to k8s manifests
+brew "kubeconform"
+brew "kind"
+brew "k3d"
+brew "stern"  # for tailing multiple pod logs simulteously
 brew "fluxctl" if hostname.start_with?("cadmus")
-brew "awscli"
-brew "aws-cdk"
-brew "cdktf"
-brew "localstack"
 #brew "leiningen"
 # great embedded key value database
 brew "leveldb"
@@ -111,6 +114,8 @@ brew "sbt" unless is_work_machine
 brew "scala" unless is_work_machine
 brew "clojure" unless is_work_machine
 brew "shellcheck"
+# For kubernetes projects
+brew "tilt"
 # A much faster replacement to grep esp for programming projects
 brew "the_silver_searcher"
 brew "ripgrep"
@@ -119,6 +124,7 @@ brew "tilt"
 #brew "thrift"
 brew "tmux"
 brew "transmission-cli"
+brew "uv"  # fast pip-tools replacement
 brew "vim"
 brew "neovim"
 brew "w3m"
@@ -133,6 +139,10 @@ brew "zstd"
 
 if is_work_machine
   brew "actionlint"
+  brew "awscli"
+  brew "aws-cdk"
+  brew "cdktf"
+  brew "localstack"
   brew "bash"
   brew "black"
   brew "cdk8s"
@@ -151,9 +161,7 @@ if is_work_machine
   brew "postgresql@12"
   brew "pyenv"
   brew "pyenv-virtualenv"
-  brew "skaffold"
   brew "tree"
-  brew "uv"
   brew "volta"
 end
 

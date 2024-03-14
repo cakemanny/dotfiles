@@ -1,0 +1,17 @@
+
+[editor]
+line-number = "relative"
+
+[keys.insert]
+# Disable keys intended for beginners
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
+
+[keys.insert.k]
+j = "normal_mode"
