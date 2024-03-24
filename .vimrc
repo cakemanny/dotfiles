@@ -117,6 +117,7 @@ set autoread
 
 " Make command-line completion better
 set wildmenu
+set wildoptions=pum,tagfile
 
 " Things to ignore when completing stuff
 set wildignore+=*.o,*.class,*.git,*.svn,*/venv/*,*/node_modules/*,*/bower_components/*
@@ -298,10 +299,13 @@ set maxmempattern=2000
 " Highlight trailing spaces in annoying red
 highlight ExtraWhitespace ctermbg=1 guibg=red
 match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+augroup vimrc
+    autocmd!
+    au BufWinEnter * match ExtraWhitespace /\s\+$/
+    au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    au InsertLeave * match ExtraWhitespace /\s\+$/
+    au BufWinLeave * call clearmatches()
+augroup END
 
 " And how about a mapping to fix it as well - cs=clear spaces
 nnoremap <Leader>cs :%s/\s\+$//<CR>
@@ -309,14 +313,15 @@ nnoremap <Leader>cs :%s/\s\+$//<CR>
 set tag=tags;/
 
 " Most indent settings are now handled by vim-sleuth
-" TODO: use augroups
-autocmd FileType clojure let b:delimitMate_quotes = "\""
-autocmd FileType diff color desert
-autocmd FileType go setlocal noexpandtab
-autocmd BufWritePost *.go :silent !goimports -w %
-autocmd FileType make setlocal noexpandtab
-" Avoid auto-wrapping long lines
-autocmd FileType ocaml setlocal fo-=t fo+=croql
+augroup vimrc
+    au FileType clojure,rust let b:delimitMate_quotes = "\""
+    au FileType diff color desert
+    au FileType go setlocal noexpandtab
+    au BufWritePost *.go :silent !goimports -w %
+    au FileType make setlocal noexpandtab
+    " Avoid auto-wrapping long lines
+    au FileType ocaml setlocal fo-=t fo+=croql
+augroup END
 
 " POSIX /bin/sh extensions should be highlighted. e.g. $(...)
 let g:is_posix = 1
