@@ -93,7 +93,6 @@ export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
 export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse.engineType=Node"
 export GOPATH=$HOME/.gopath
 export NVM_DIR="$HOME/.nvm"
-
 export FZF_DEFAULT_COMMAND='ag --nocolor -g .'
 
 #export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist noma' -\""
@@ -101,6 +100,8 @@ export FZF_DEFAULT_COMMAND='ag --nocolor -g .'
 export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export ASPNETCORE_ENVIRONMENT=Development
+# cloudsdk is not working with python3.12 right now (module impl removed)
+export CLOUDSDK_PYTHON=python3.11
 
 [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 # to fix ocaml upgrade
