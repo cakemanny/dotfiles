@@ -1,82 +1,26 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# - - - - - - Shell Options - - - - - -
+# case insensitive and substring completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+# finish loading compsys
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# History
+HISTSIZE=500000
+SAVEHIST=100000
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt share_history
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Give us the edit-command-line widget
+autoload edit-command-line
+zle -N edit-command-line
 
-# Uncomment the following line to use case-sensitive completion.
-#CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to disable command auto-correction.
-DISABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git autojump brew sbt scala django)
-plugins=(git brew)
-
-if [[ -d $ZSH ]]; then
-    source $ZSH/oh-my-zsh.sh
-else
-    # case insensitive and substring completion
-    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
-    # finish loading compsys
-    zstyle :compinstall filename "$HOME/.zshrc"
-    autoload -Uz compinit
-    compinit
-
-    # History
-    HISTSIZE=500000
-    SAVEHIST=100000
-    setopt extended_history
-    setopt hist_expire_dups_first
-    setopt hist_ignore_dups
-    setopt hist_ignore_space
-    setopt hist_verify
-    setopt share_history
-
-    # Give us the edit-command-line widget
-    autoload edit-command-line
-    zle -N edit-command-line
-fi
-
-# ------------ User configuration ------------
+setopt extendedglob # Allows for regex style globbing
 
 # - - - - - - Environment - - - - - -
 
@@ -129,10 +73,6 @@ export LANG=en_GB.UTF-8
 # Install direnv hook
 (whence direnv 1>/dev/null) && eval "$(direnv hook zsh)"
 
-# - - - - - - Shell Options - - - - - -
-# Most of the ones we want are already set by the oh-my-zsh
-
-setopt extendedglob # Allows for regex style globbing
 
 # - - - - - - Prompt Display and Colors - - - - - -
 
@@ -185,17 +125,6 @@ fi
 #  enable vim mode on comandline
 bindkey -v
 
-# show vim status
-#function zle-line-init zle-keymap-select {
-#    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-#    RPS2="$RPS1"
-#    #local _i_or_n="${${KEYMAP/vicmd/N}/(main|viins)/I}"
-#    #PS1='$(_user_host)%~$(_git-branch-prompt) '"${_i_or_n}"'%% '
-#    zle reset-prompt
-#}
-#zle -N zle-line-init
-#zle -N zle-keymap-select
-
 # add missing vim hotkeys - a=cmd-mode v=insert-mode
 bindkey -a u undo
 bindkey -a '^R' redo
@@ -217,36 +146,6 @@ bindkey -a 'L'  vi-end-of-line
 
 
 # -------------------- Functions --------------------
-
-function cdfinder {
-    local target="$(osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)')"
-    if [ "$target" != "" ]; then
-        cd "$target"; pwd
-    else
-        echo 'No Finder window found' >&2
-    fi
-}
-
-function cdf {
-    local toplevel
-    local directory
-    if [ -z "$1" ]; then
-        toplevel=.
-    else
-        toplevel="$1"
-    fi
-    directory=$(find "$toplevel" \
-        \( -name venv \
-        -o -name bower_components \
-        -o -name node_modules \
-        -o -name collect_static \
-        -o -name .git \
-        -o -name __pycache__ \
-        \) -prune -o -type d -print | fzf)
-    if [ ! -z "$directory" ]; then
-        cd "$directory"
-    fi
-}
 
 function ghash {
     local ref
@@ -298,7 +197,7 @@ alias recent-branches="git for-each-ref --sort=-committerdate refs/heads/ | sed 
 alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*refs/heads/||" | fzf)'
 alias pip='test -n "$VIRTUAL_ENV" && env pip'
 alias mutt='neomutt'
-# alias doco='docker compose'
+
 function doco {
     if [[ $PWD == $HOME/src/local-dev-stack* ]] && [[ -x $HOME/src/local-dev-stack/doco.sh ]]; then
         $HOME/src/local-dev-stack/doco.sh "$@"
