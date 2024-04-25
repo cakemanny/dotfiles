@@ -19,6 +19,7 @@ brew "binutils"
 brew "bottom"  # like top - but modern
 brew "ocaml"
 brew "camlp5"
+brew "clang-format"
 brew "cmake"
 brew "colordiff"
 brew "ctags"
@@ -68,6 +69,7 @@ brew "jq"
 brew "jid"
 brew "gron"
 brew "kubernetes-cli"
+brew "helm"
 brew "krew"
 brew "kubeseal"
 brew "skaffold"
@@ -110,6 +112,7 @@ brew "redis", restart_service: true unless is_work_machine
 brew "rlwrap"
 brew "ruby", link: true
 brew "rustup-init"
+brew "cargo-watch"
 brew "sbt" unless is_work_machine
 brew "scala" unless is_work_machine
 brew "clojure" unless is_work_machine
@@ -151,7 +154,6 @@ if is_work_machine
   brew "go@1.19"
   brew "go@1.21"
   brew "golangci-lint"
-  brew "helm"
   brew "make"
   brew "mongosh"
   brew "nss"

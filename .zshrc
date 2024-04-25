@@ -184,6 +184,7 @@ alias gsu='git submodule update'
 alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #dotfiles config status.showUntrackedFiles no
 
+alias ,dotfiles='if test -z "$GIT_DIR"; then export GIT_DIR=$HOME/.dotfiles/ GIT_WORK_TREE=$HOME; elif test "$GIT_DIR" = "$HOME/.dotfiles/"; then unset GIT_DIR GIT_WORK_TREE; fi'
 alias dfs='dotfiles status'
 alias dfa='dotfiles add'
 alias dfd='dotfiles diff'

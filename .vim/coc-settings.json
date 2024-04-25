@@ -32,7 +32,8 @@
             "filetypes": ["tiltfile"]
         }
     },
-    "diagnostic.virtualText": false,
+    // TODO: work out why I disabled this ...
+    "diagnostic.virtualText": true,
     "pyright.inlayHints.variableTypes": false,
     "pyright.inlayHints.functionReturnTypes": false,
     "diagnostic.showUnused": true,
