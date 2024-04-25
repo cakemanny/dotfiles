@@ -24,6 +24,12 @@
             "args": ["--lsp"],
             "rootPatterns": ["*.cabal"],
             "filetypes": ["haskell", "lhaskell"]
+        },
+        "tiltfile": {
+            "command": "tilt",
+            "args": ["lsp", "start"],
+            "rootPatterns": ["Tiltfile"],
+            "filetypes": ["tiltfile"]
         }
     },
     "diagnostic.virtualText": false,
