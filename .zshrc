@@ -225,6 +225,10 @@ alias kln='kubectl get -o name ns | sed "s|^.*/|  |;\|$(krn)|s/ /*/"'
 # Change current namespace
 alias kcn='kubectl config set-context --current --namespace "$(kln | fzf -e | sed "s/^..//")"'
 
+# - docker aliases -
+alias dils='docker image ls'
+alias ,docker-image-select=$'docker image ls | fzf -e --multi --height=10 --border --header-lines=1 | awk \'{ print $1 ":" $2 }\''
+alias drmi=$'docker image ls | fzf -e --multi --height=10 --border --header-lines=1 | awk \'{ print $1 ":" $2 }\' | xargs docker image rm'
 
 # -------------------- Completions --------------------
 
