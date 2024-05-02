@@ -382,7 +382,7 @@ let g:ale_disable_lsp = 1
 let g:ale_c_clang_options = ' -std=gnu11 -Wall'
 let g:ale_c_gcc_options = ' -std=gnu11 -Wall'
 
-" 
+"
 let g:ale_go_golangci_lint_package = 1
 
 " Fix macvim python problems
@@ -427,7 +427,13 @@ endif
 
 
 " ## coc
-let g:coc_node_path = $HOMEBREW_PREFIX . '/bin/node'
+" Avoid node being affected by nvm or corepack etc
+if $HOMEBREW_PREFIX == ""
+    let $HOMEBREW_PREFIX = "/usr/local"
+endif
+if executable($HOMEBREW_PREFIX . '/bin/node')
+    let g:coc_node_path = $HOMEBREW_PREFIX . '/bin/node'
+endif
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
