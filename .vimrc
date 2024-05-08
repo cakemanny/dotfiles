@@ -444,7 +444,10 @@ nmap <silent> gh :call CocActionAsync('doHover')<CR>
 nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
 nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yaml', 'coc-json', 'coc-rust-analyzer', 'coc-pyright']
+let g:coc_global_extensions = [
+            \ 'coc-json', 'coc-tsserver', 'coc-yaml', 'coc-json',
+            \ 'coc-rust-analyzer', 'coc-pyright'
+            \ ]
 if hostname() !~ '^bm-dan-laptop'
     let g:coc_global_extensions += []
 endif

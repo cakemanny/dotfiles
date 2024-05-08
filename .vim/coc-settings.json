@@ -32,12 +32,15 @@
             "filetypes": ["tiltfile"]
         }
     },
-    // TODO: work out why I disabled this ...
-    "diagnostic.virtualText": true,
+    // Disable error text on the RHS of the code.
+    "diagnostic.virtualText": false,
     "pyright.inlayHints.variableTypes": false,
     "pyright.inlayHints.functionReturnTypes": false,
     "diagnostic.showUnused": true,
     "diagnostic.hintSign": " ",
     // Not sure about this one
-    "inlayHint.enable": false
+    "inlayHint.enable": false,
+    "hover.floatConfig": {
+        "border": true
+    }
 }
