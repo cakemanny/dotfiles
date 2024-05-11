@@ -1,6 +1,11 @@
 // vim: filetype=jsonc
 {
     "pyright.enable": true,
+    "workspace.ignoredFolders": [
+        "$HOME",
+        // $HOMEBREW_PREFIX would be correct
+        "/opt/homebrew"
+    ],
     "languageserver": {
         "golang":{
             "command": "$GOPATH/bin/gopls",
