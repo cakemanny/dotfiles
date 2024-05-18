@@ -7,6 +7,7 @@ autoload -Uz compinit
 compinit
 
 # History
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=500000
 SAVEHIST=100000
 setopt extended_history
