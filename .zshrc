@@ -252,8 +252,11 @@ _kitty() {
 }
 compdef _kitty kitty
 
+command -v kubectl >/dev/null && source <(kubectl completion zsh)
 # generate with helm completion zsh
 [[ -f $HOME/.completions.d/helm.inc.zsh ]] && source $HOME/.completions.d/helm.inc.zsh
+
+command -v tilt >/dev/null && source <(tilt completion zsh)
 
 ## stuff for nvm
 #[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
