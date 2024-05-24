@@ -337,8 +337,6 @@ let g:netrw_bufsettings = 'nomodifiable nomodified number nobuflisted nowrap rea
 nnoremap <Leader>ex :Explore<CR>
 
 "" CtrlP Configuration
-"let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project)'
-        ""\ 'dir': '\v[\/]\.(git|hg|svn)$\|target\|node_modules\|bower_components',
 let g:ctrlp_custom_ignore = {
         \ 'dir': 'target\|node_modules\|bower_components\|build\|_build\|venv\|__pycache__',
         \ 'file': '\v\.(exe|so|dll|class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip|pyc)$',
