@@ -25,7 +25,7 @@ setopt extendedglob # Allows for regex style globbing
 
 # - - - - - - Environment - - - - - -
 
-export PATH=$PATH:~/.ghcup/bin:~/.cargo/bin
+export PATH=$PATH:~/.ghcup/bin:~/.cargo/bin:~/.local/bin
 #export JAVA_HOME=$(/usr/libexec/java_home)
 #export SCALA_HOME=/usr/local/opt/scala/idea
 #export TOMCAT_HOME=/usr/local/apache-tomcat
@@ -232,6 +232,10 @@ alias _docker-image-select=$'docker image ls | fzf -e --multi --height=50% --bor
 alias drmi='_docker-image-select | xargs docker image rm'
 alias dihist='_docker-image-select | xargs docker image history'
 
+# - pnpm aliases -
+alias p='pnpm'
+alias pifl='pnpm install --frozen-lockfile'
+
 # -------------------- Completions --------------------
 
 GOOGLE_CLOUD_SDK=${HOMEBREW_PREFIX:-/usr/local}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
@@ -270,3 +274,7 @@ if [[ -d $PYENV_ROOT ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init - zsh)"
 fi
+
+
+# https://github.com/Schniz/fnm  - another alternative NVM alternative
+command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
