@@ -462,14 +462,15 @@ function! CloseHiddenBuffers()
   endwhile
 endfun
 
-if executable('ag')
+if executable('rg') && has('nvim')
+  set grepprg=rg\ --vimgrep\ -u
+elseif executable('ag') && !has('nvim')  " nvim >= 0.10.x
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " Ripgrep or The Silver Searcher
 if executable('rg')
-  "set grepprg=rg\ --color\ never\ --no-heading
   let g:ctrlp_user_command = 'rg %s --color never --files'
   let g:ctrlp_use_caching = 0
 elseif executable('ag')
