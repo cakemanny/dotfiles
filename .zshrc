@@ -1,10 +1,4 @@
 # - - - - - - Shell Options - - - - - -
-# case insensitive and substring completion
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
-# finish loading compsys
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
 
 # History
 HISTFILE=$HOME/.zsh_history
@@ -59,6 +53,7 @@ if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
     export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
     export HOMEBREW_REPOSITORY="/opt/homebrew"
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+    FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 fi
 
 # https://krew.sigs.k8s.io/docs/user-guide/setup/install/
@@ -71,8 +66,6 @@ export PATH=$HOME/bin:$PATH
 # export LANG=en_US.UTF-8
 export LANG=en_GB.UTF-8
 
-# Install direnv hook
-(whence direnv 1>/dev/null) && eval "$(direnv hook zsh)"
 
 
 # - - - - - - Prompt Display and Colors - - - - - -
@@ -120,6 +113,9 @@ ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)%~'
 if [[ "$TERM_PROGRAM" == Apple_Terminal ]]; then
     ZSH_THEME_TERM_TITLE_IDLE='$(_user_host)'
 fi
+
+# Install direnv hook
+(whence direnv 1>/dev/null) && eval "$(direnv hook zsh)"
 
 # -------------------- Vim Mode --------------------
 
@@ -184,6 +180,9 @@ alias gsu='git submodule update'
 #git init --bare ~/.dotfiles
 alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #dotfiles config status.showUntrackedFiles no
+# one of
+#dotfiles remote add origin git@github.com:cakemanny/dotfiles.git
+#dotfiles remote add origin https://github.com/cakemanny/dotfiles.git
 
 alias ,dotfiles='if test -z "$GIT_DIR"; then export GIT_DIR=$HOME/.dotfiles/ GIT_WORK_TREE=$HOME; elif test "$GIT_DIR" = "$HOME/.dotfiles/"; then unset GIT_DIR GIT_WORK_TREE; fi'
 alias dfs='dotfiles status'
@@ -238,6 +237,15 @@ alias pifl='pnpm install --frozen-lockfile'
 
 # -------------------- Completions --------------------
 
+# case insensitive and substring completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+# finish loading compsys
+zstyle :compinstall filename "$HOME/.zshrc"
+# must come after setting FPATH
+autoload -Uz compinit
+compinit
+
+
 GOOGLE_CLOUD_SDK=${HOMEBREW_PREFIX:-/usr/local}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
 [[ -f "$GOOGLE_CLOUD_SDK/path.zsh.inc" ]] && source "$GOOGLE_CLOUD_SDK/path.zsh.inc"
@@ -245,7 +253,7 @@ GOOGLE_CLOUD_SDK=${HOMEBREW_PREFIX:-/usr/local}/Caskroom/google-cloud-sdk/latest
 # The next line enables shell command completion for gcloud.
 [[ -f "$GOOGLE_CLOUD_SDK/completion.zsh.inc" ]] && source "$GOOGLE_CLOUD_SDK/completion.zsh.inc"
 
-# completion for the kitty command
+# override completion for the kitty command
 _kitty() {
     local src
     # Send all words up to the word the cursor is currently on
@@ -255,16 +263,6 @@ _kitty() {
     fi
 }
 compdef _kitty kitty
-
-command -v kubectl >/dev/null && source <(kubectl completion zsh)
-# generate with helm completion zsh
-[[ -f $HOME/.completions.d/helm.inc.zsh ]] && source $HOME/.completions.d/helm.inc.zsh
-
-command -v tilt >/dev/null && source <(tilt completion zsh)
-
-## stuff for nvm
-#[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
-#[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
 # stuff for pyenv
