@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Maybe at some point we will do something akin to:
+# https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+
+# Some changes require admin
+sudo -v
+
+# The Keyboard switcher has a bug where it just randomly shows up
+# after some amount of inactivity. Let's just disable it.
+# https://stackoverflow.com/a/77614907/4591158
+defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
+
+# Disable the hold for special characters in favour of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Disable wide blue text cursor (insertion point)
+# https://stackoverflow.com/a/77296786/4591158
+sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
