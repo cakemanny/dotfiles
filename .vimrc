@@ -41,7 +41,7 @@ if 0
 endif
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " Plug 'b4winckler/vim-objc'
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 "Plug 'derekwyatt/vim-scala'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -463,7 +463,7 @@ function! CloseHiddenBuffers()
 endfun
 
 if executable('rg') && has('nvim')
-  set grepprg=rg\ --vimgrep\ -u
+  set grepprg=rg\ --vimgrep\ --hidden\ --glob\ '!.git'
 elseif executable('ag') && !has('nvim')  " nvim >= 0.10.x
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
