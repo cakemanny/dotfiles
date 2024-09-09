@@ -32,6 +32,7 @@ brew "dhall-json"
 brew "dhall-lsp-server"
 # Auto set environment variables when entering directories
 brew "direnv"
+brew "docker-completion"
 brew "emacs"
 brew "ffmpeg"
 # amazing fuzzy finder
