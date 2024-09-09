@@ -321,6 +321,12 @@ augroup vimrc
     au FileType make setlocal noexpandtab
     " Avoid auto-wrapping long lines
     au FileType ocaml setlocal fo-=t fo+=croql
+    if has('mac')
+        " Be able to jump to header files using gf
+        au FileType c setlocal path+=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+        " Many .h files are interpreted as cpp :(
+        au FileType cpp setlocal path+=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+    endif
 augroup END
 
 " POSIX /bin/sh extensions should be highlighted. e.g. $(...)
