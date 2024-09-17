@@ -140,6 +140,7 @@ brew "zsh"
 brew "zstd"
 
 if is_work_machine
+  tap "ionos-cloud/homebrew-ionos-cloud"
   brew "actionlint"
   brew "awscli"
   brew "aws-cdk"
@@ -152,10 +153,12 @@ if is_work_machine
   brew "ctlptl"
   brew "deno"
   brew "dive"
+  brew "docker-completion"
   brew "fnm"  # like nvm but faster
   brew "go@1.19"
   brew "go@1.21"
   brew "golangci-lint"
+  brew "ionosctl"
   brew "k9s"
   brew "make"
   brew "mongosh"
@@ -164,6 +167,7 @@ if is_work_machine
   brew "openssl@3"
   brew "pnpm"
   brew "postgresql@12"
+  brew "postgresql@16"
   brew "pyenv"
   brew "pyenv-virtualenv"
   brew "tree"
