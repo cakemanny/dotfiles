@@ -230,6 +230,8 @@ alias dils='docker image ls'
 alias _docker-image-select=$'docker image ls | fzf -e --multi --height=50% --border --header-lines=1 | awk \'{ print $1 ":" $2 }\''
 alias drmi='_docker-image-select | xargs docker image rm'
 alias dihist='_docker-image-select | xargs docker image history'
+# get a shell on the docker desktop host i.e. VM
+alias dhost="docker run -it --rm --privileged --pid host alpine nsenter -t 1 -m -u -i -n -p -- sh"
 
 # - pnpm aliases -
 alias p='pnpm'
