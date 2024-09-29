@@ -106,6 +106,7 @@ brew "pspg"
 #brew "potrace"
 brew "python"
 brew "python@3.8"
+brew "pipx"
 brew "qemu"
 brew "reattach-to-user-namespace"
 brew "redis", restart_service: true unless is_work_machine
