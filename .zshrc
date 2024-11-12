@@ -192,7 +192,8 @@ alias dfcommit='dotfiles commit'
 
 # https://github.com/kubermatic/fubectl
 [[ -f $HOME/.fubectl.source ]] && source $HOME/.fubectl.source
-
+# This conflicts with the kcl configuration language tool
+unalias kcl
 
 alias recent-branches="git for-each-ref --sort=-committerdate refs/heads/ | sed 's|.*/||'"
 alias gcof='git checkout $(git for-each-ref --sort=-committerdate refs/heads/ | sed "s|.*refs/heads/||" | fzf)'

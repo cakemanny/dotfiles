@@ -112,7 +112,7 @@ brew "reattach-to-user-namespace"
 brew "redis", restart_service: true unless is_work_machine
 brew "rlwrap"
 brew "ruby", link: true
-brew "rustup-init"
+brew "rustup"
 brew "cargo-watch"
 brew "sbt" unless is_work_machine
 brew "scala" unless is_work_machine
@@ -142,7 +142,9 @@ brew "zsh"
 brew "zstd"
 
 if is_work_machine
+  tap "hashicorp/tap"
   tap "ionos-cloud/homebrew-ionos-cloud"
+  tap "kcl-lang/tap"
   brew "actionlint"
   brew "awscli"
   brew "aws-cdk"
@@ -151,28 +153,38 @@ if is_work_machine
   brew "calicoctl"
   brew "cdk8s"
   brew "cdktf"
+  brew "cloudflared"
   brew "commitizen"
   brew "ctlptl"
   brew "deno"
   brew "dive"
   brew "docker-completion"
+  brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
+  brew "fd"  # alternative to find
+  brew "gnu-sed"
   brew "go@1.19"
   brew "go@1.21"
   brew "golangci-lint"
   brew "ionosctl"
   brew "k9s"
+  brew "kcl"
   brew "make"
   brew "mongosh"
   brew "nss"
   brew "nvm"
   brew "openssl@3"
+  brew "pkl"
   brew "pnpm"
   brew "postgresql@12"
   brew "postgresql@16"
   brew "pyenv"
   brew "pyenv-virtualenv"
+  brew "python@3.9"
+  brew "python@3.10"
+  brew "python@3.11"
   brew "tree"
+  brew "hashicorp/tap/vault"
   brew "volta"
 end
 

@@ -7,22 +7,14 @@
         "/opt/homebrew"
     ],
     "languageserver": {
-        "golang":{
-            "command": "$GOPATH/bin/gopls",
-            "rootPatterns": ["go.mod"],
-            "filetypes": ["go"]
-        },
-        "dhall":{
+        "dhall": {
             "command": "dhall-lsp-server",
             "filetypes": ["dhall"]
         },
-        "zig": {
-            "command": "zls",
-            "filetypes": ["zig"]
-        },
-        "ocaml":{
-            "command": "ocamllsp",
-            "filetypes": ["ocaml"]
+        "golang": {
+            "command": "$GOPATH/bin/gopls",
+            "rootPatterns": ["go.mod"],
+            "filetypes": ["go"]
         },
         "haskell": {
             "command": "haskell-language-server-wrapper",
@@ -30,11 +22,27 @@
             "rootPatterns": ["*.cabal"],
             "filetypes": ["haskell", "lhaskell"]
         },
+        "kcl": {
+            "command": "kcl-language-server",
+            "filetypes": ["kcl"]
+        },
+        "ocaml": {
+            "command": "ocamllsp",
+            "filetypes": ["ocaml"]
+        },
+        "pkl": {
+            "command": "pkl-lsp",
+            "filetypes": ["pkl"]
+        },
         "tiltfile": {
             "command": "tilt",
             "args": ["lsp", "start"],
             "rootPatterns": ["Tiltfile"],
             "filetypes": ["tiltfile"]
+        },
+        "zig": {
+            "command": "zls",
+            "filetypes": ["zig"]
         }
     },
     // Disable error text on the RHS of the code.

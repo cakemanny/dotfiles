@@ -54,6 +54,8 @@ Plug 'neomutt/neomutt.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'google/vim-jsonnet'
 Plug 'vmchale/dhall-vim'
+Plug 'kcl-lang/kcl.nvim'
+Plug 'apple/pkl-neovim'
 Plug 'ziglang/zig.vim'
 
 " Initialize plugin system
@@ -426,6 +428,18 @@ lua << EOF
             disable = { "c", "python" },
         },
     }
+    local hasConfigs, configs = pcall(require, "nvim-treesitter.configs")
+    if hasConfigs then
+      configs.setup {
+        ensure_installed = "pkl",
+        highlight = {
+          enable = true,              -- false will disable the whole extension
+        },
+        indent = {
+          enable = true
+        }
+      }
+    end
 EOF
 endif
 
