@@ -158,13 +158,12 @@ if is_work_machine
   brew "ctlptl"
   brew "deno"
   brew "dive"
-  brew "docker-completion"
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
   brew "fd"  # alternative to find
   brew "gnu-sed"
-  brew "go@1.19"
   brew "go@1.21"
+  brew "go@1.22"
   brew "golangci-lint"
   brew "ionosctl"
   brew "k9s"
@@ -174,6 +173,7 @@ if is_work_machine
   brew "nss"
   brew "nvm"
   brew "openssl@3"
+  brew "openjdk@17"
   brew "pkl"
   brew "pnpm"
   brew "postgresql@12"
