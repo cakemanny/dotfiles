@@ -157,7 +157,6 @@ if is_work_machine
   brew "commitizen"
   brew "ctlptl"
   brew "deno"
-  brew "dive"
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
   brew "fd"  # alternative to find
