@@ -428,6 +428,7 @@ lua << EOF
             disable = { "c", "python" },
         },
     }
+
     local hasConfigs, configs = pcall(require, "nvim-treesitter.configs")
     if hasConfigs then
       configs.setup {

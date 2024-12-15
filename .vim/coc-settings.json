@@ -55,5 +55,7 @@
     "inlayHint.enable": false,
     "hover.floatConfig": {
         "border": true
-    }
+    },
+    // FML these are annoying
+    "rust-analyzer.updates.checkOnStartup": false
 }
