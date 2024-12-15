@@ -14,6 +14,7 @@ defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
 # Disable the hold for special characters in favour of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Disable wide blue text cursor (insertion point)
+# ~Disable wide blue text cursor (insertion point)~
+# _Enable_: cursor often seems to simply disappear completely without it
 # https://stackoverflow.com/a/77296786/4591158
-sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool YES
