@@ -193,6 +193,7 @@ end
 # ==== CASKS ====
 cask "basictex"
 cask "flutter" if is_work_machine
+cask "flameshot" if is_work_machine
 cask "calibre" unless is_work_machine
 cask "kitty"
 cask "xquartz"
