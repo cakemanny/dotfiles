@@ -170,6 +170,7 @@ if is_work_machine
   brew "kcl"
   brew "make"
   brew "mongosh"
+  brew "mongodb-atlas"
   brew "nss"
   brew "nvm"
   brew "openssl@3"
