@@ -157,6 +157,7 @@ if is_work_machine
   brew "cloudflared"
   brew "commitizen"
   brew "ctlptl"
+  brew "difftastic"
   brew "deno"
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
@@ -168,6 +169,7 @@ if is_work_machine
   brew "ionosctl"
   brew "k9s"
   brew "kcl"
+  brew "kcl-lsp"
   brew "make"
   brew "mongosh"
   brew "mongodb-atlas"
@@ -177,7 +179,7 @@ if is_work_machine
   brew "openjdk@17"
   brew "pkl"
   brew "pnpm"
-  brew "postgresql@12"
+  brew "postgresql@14"
   brew "postgresql@16"
   brew "pyenv"
   brew "pyenv-virtualenv"
