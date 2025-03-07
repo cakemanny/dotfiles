@@ -2,3 +2,4 @@
 ._.DS_Store
 *.sw[op]
 .envrc
+Makefile.user
