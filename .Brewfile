@@ -181,8 +181,6 @@ if is_work_machine
   brew "pnpm"
   brew "postgresql@14"
   brew "postgresql@16"
-  brew "pyenv"
-  brew "pyenv-virtualenv"
   brew "python@3.9"
   brew "python@3.10"
   brew "python@3.11"

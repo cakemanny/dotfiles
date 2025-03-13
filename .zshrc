@@ -268,14 +268,5 @@ _kitty() {
 compdef _kitty kitty
 
 
-# stuff for pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-if [[ -d $PYENV_ROOT ]]; then
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init - zsh)"
-fi
-
-
 # https://github.com/Schniz/fnm  - another alternative NVM alternative
 command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
