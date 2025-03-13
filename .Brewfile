@@ -82,6 +82,7 @@ brew "fluxctl" if hostname.start_with?("cadmus")
 # great embedded key value database
 brew "leveldb"
 brew "libxml2"
+brew "lima"
 #brew "llvm"  if hostname.start_with?("cadmus")
 brew "maven" if hostname.start_with?("cadmus")
 #brew "mono"
