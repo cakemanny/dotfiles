@@ -464,12 +464,18 @@ nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
 nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
 let g:coc_global_extensions = [
-            \ 'coc-json', 'coc-tsserver', 'coc-yaml', 'coc-json',
+            \ 'coc-json', 'coc-tsserver', 'coc-yaml',
             \ 'coc-rust-analyzer', 'coc-pyright'
             \ ]
 if hostname() !~ '^bm-dan-laptop'
     let g:coc_global_extensions += []
 endif
+
+augroup vimrc
+    au FileType rust nmap <silent> <Leader>od
+        \ :call CocActionAsync('runCommand', 'rust-analyzer.openDocs')<CR>
+    au FileType rust ALEDisableBuffer
+augroup END
 
 " useful functions
 function! CloseHiddenBuffers()
