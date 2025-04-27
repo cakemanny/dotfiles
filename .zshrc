@@ -163,6 +163,7 @@ function b64dec {
 
 # -------------------- Aliases --------------------
 # Most of those are already set by oh-my-zsh
+alias ls='ls --color=auto'  # this one is needed if on linux
 alias ll='ls -lh'
 alias lll='ls -l'
 
