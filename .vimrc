@@ -55,7 +55,9 @@ Plug 'hashivim/vim-terraform'
 Plug 'google/vim-jsonnet'
 Plug 'vmchale/dhall-vim'
 Plug 'kcl-lang/kcl.nvim'
-Plug 'apple/pkl-neovim'
+if has('nvim')
+    Plug 'apple/pkl-neovim'
+endif
 Plug 'ziglang/zig.vim'
 
 " Initialize plugin system
