@@ -424,25 +424,18 @@ let g:go_template_autocreate = 0
 if has('nvim')
 lua << EOF
     require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "pkl" },
         highlight = {
             enable = true,
             disable = { "c", "python" },
         },
-    }
-
-    local hasConfigs, configs = pcall(require, "nvim-treesitter.configs")
-    if hasConfigs then
-      configs.setup {
-        ensure_installed = "pkl",
-        highlight = {
-          enable = true,              -- false will disable the whole extension
-        },
         indent = {
-          enable = true
+            enable = true,
+            disable = function(lang, bufnr)
+                return lang ~= "pkl"
+            end,
         }
-      }
-    end
+    }
 EOF
 endif
 
