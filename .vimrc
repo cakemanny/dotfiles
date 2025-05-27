@@ -92,7 +92,7 @@ else
     " scrolling in insert mode on macOS terminal inserts an escape code based
     " on the position, which we are not able to predict in a remap
     set mouse=nvc
-    if (has('mac') || has('linux')) && !has('nvim')
+    if (has('unix') || has('linux')) && !has('nvim')
         " have mouse selection update while dragging
         set ttymouse=sgr
     end
