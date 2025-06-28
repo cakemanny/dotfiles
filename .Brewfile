@@ -139,6 +139,7 @@ brew "wget"
 brew "yarn"
 brew "youtube-dl" unless is_work_machine
 brew "zig"
+brew "zls"
 brew "zsh"
 # very good and fast compression
 brew "zstd"
