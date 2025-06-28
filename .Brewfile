@@ -6,7 +6,6 @@ is_work_machine = hostname.start_with?("bm-dan-laptop")
 
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
