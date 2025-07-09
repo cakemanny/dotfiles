@@ -14,7 +14,6 @@ brew "openssl@1.1"
 brew "readline"
 brew "automake"
 brew "binutils"
-#brew "boost"
 brew "bottom"  # like top - but modern
 tap "oven-sh/bun"
 brew "oven-sh/bun/bun"  # fast javascript runtime
@@ -29,8 +28,8 @@ brew "curl"
 brew "cue"
 brew "xh" # like httpie
 brew "coreutils"
-brew "dhall-json"
-brew "dhall-lsp-server"
+#brew "dhall-json"
+#brew "dhall-lsp-server"
 # Auto set environment variables when entering directories
 brew "direnv"
 brew "docker-completion"
@@ -41,8 +40,8 @@ brew "fzf"
 brew "gcc"
 # Glascow Haskell Compiler - not installed by default as it's rather large
 #brew "ghc"
-brew "ghcup"
-brew "ghostscript"
+#brew "ghcup"
+#brew "ghostscript"
 brew "git"
 # OpenGL windowing library
 brew "glfw"
@@ -56,8 +55,8 @@ brew "gsasl"
 # Load testing tool
 brew "hey"
 # modal editor in rust
-brew "helix"
-brew "haskell-stack"
+#brew "helix"
+#brew "haskell-stack"
 # Github hub
 brew "hub"
 brew "gh"
@@ -67,14 +66,10 @@ brew "imagemagick"
 #brew "jbig2dec"
 #brew "jbig2enc"
 brew "jq"
-# JSON incremental digger: https://github.com/simeji/jid
-brew "jid"
 brew "gron"
 brew "kubernetes-cli"
 brew "helm"
 brew "krew"
-brew "kubeseal"
-brew "kubeconform"
 brew "kind"
 brew "k3d"
 brew "stern"  # for tailing multiple pod logs simulteously
@@ -85,8 +80,9 @@ brew "leveldb"
 brew "libxml2"
 brew "lima"
 #brew "llvm"  if hostname.start_with?("cadmus")
+brew "lua-language-server"
 brew "maven" if hostname.start_with?("cadmus")
-#brew "mono"
+brew "mdbook"
 brew "mosh"
 brew "mycli"
 brew "mysql"
@@ -97,10 +93,9 @@ brew "nmap"
 brew "node"
 brew "pnpm"
 brew "opam"
+brew "ollama"  # llm model runner
 brew "pandoc"
 brew "pgcli"
-# pager for psql / pgcli / mysql / etc
-brew "pspg"
 # For Rasterizing PDFs?
 #brew "poppler"
 #brew "postgresql"
@@ -127,7 +122,6 @@ brew "the_silver_searcher"
 brew "ripgrep"
 # For kubernetes projects
 brew "tilt"
-#brew "thrift"
 brew "tmux"
 brew "transmission-cli"
 brew "uv"  # fast pip-tools replacement
