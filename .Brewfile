@@ -22,6 +22,7 @@ brew "camlp5"
 brew "clang-format"
 brew "cmake"
 brew "colordiff"
+brew "colima"  # container runtime
 brew "ctags"
 brew "curl"
 # The cue configuration language
@@ -32,6 +33,7 @@ brew "coreutils"
 #brew "dhall-lsp-server"
 # Auto set environment variables when entering directories
 brew "direnv"
+brew "docker"
 brew "docker-completion"
 brew "emacs"
 brew "ffmpeg"
@@ -96,13 +98,13 @@ brew "opam"
 brew "ollama"  # llm model runner
 brew "pandoc"
 brew "pgcli"
+brew "pkg-config"
 # For Rasterizing PDFs?
 #brew "poppler"
 #brew "postgresql"
 # Traces things
 #brew "potrace"
 brew "python"
-brew "python@3.8"
 brew "pipx"
 brew "qemu"
 brew "reattach-to-user-namespace"
@@ -112,6 +114,7 @@ brew "ruby", link: true
 brew "rustup"
 brew "cargo-watch"
 brew "sbt" unless is_work_machine
+brew "sccache"
 brew "scala" unless is_work_machine
 brew "clojure" unless is_work_machine
 brew "shellcheck"
@@ -125,6 +128,7 @@ brew "tilt"
 brew "tmux"
 brew "transmission-cli"
 brew "uv"  # fast pip-tools replacement
+brew "ruff"
 brew "vim"
 brew "neovim"
 brew "w3m"
@@ -156,6 +160,7 @@ if is_work_machine
   brew "ctlptl"
   brew "difftastic"
   brew "deno"
+  brew "duckdb"
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
   brew "fd"  # alternative to find
@@ -173,9 +178,10 @@ if is_work_machine
   brew "mongodb-atlas"
   brew "nss"
   brew "nvm"
-  brew "openssl@3"
+  brew "offlineimap" # <- for use with notmuch, neomutt
   brew "openjdk@17"
   brew "openjdk@21"
+  brew "openssl@3"
   brew "pkl"
   brew "pnpm"
   brew "postgresql@14"
@@ -197,6 +203,8 @@ cask "flutter" if is_work_machine
 cask "flameshot" if is_work_machine
 cask "calibre" unless is_work_machine
 cask "kitty"
+cask "mongodb-compass" if is_work_machine
+cask "tableplus" if is_work_machine
 cask "xquartz"
 cask "google-cloud-sdk"
 cask "vlc"
