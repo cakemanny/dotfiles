@@ -34,7 +34,9 @@ brew "coreutils"
 # Auto set environment variables when entering directories
 brew "direnv"
 brew "docker"
+brew "docker-buildx"
 brew "docker-completion"
+brew "docker-credential-helper"
 brew "emacs"
 brew "ffmpeg"
 # amazing fuzzy finder
@@ -108,7 +110,7 @@ brew "python"
 brew "pipx"
 brew "qemu"
 brew "reattach-to-user-namespace"
-brew "redis", restart_service: true unless is_work_machine
+brew "redis", restart_service: true
 brew "rlwrap"
 brew "ruby", link: true
 brew "rustup"
@@ -160,6 +162,7 @@ if is_work_machine
   brew "ctlptl"
   brew "difftastic"
   brew "deno"
+  brew "docker-credential-helper-ecr"
   brew "duckdb"
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
@@ -190,7 +193,7 @@ if is_work_machine
   brew "python@3.9"
   brew "python@3.10"
   brew "python@3.11"
-  brew "stackit"
+  cask "stackit"
   brew "tree"
   brew "terraform"
   brew "hashicorp/tap/vault"
