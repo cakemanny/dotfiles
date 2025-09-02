@@ -33,7 +33,7 @@ export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse
 export GOPATH=$HOME/.gopath
 export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_COMMAND='ag --nocolor -g .'
-
+export UV_PYTHON_DOWNLOADS=never
 #export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist noma' -\""
 
 export HOMEBREW_MAKE_JOBS=4
