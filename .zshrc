@@ -161,6 +161,17 @@ function b64dec {
     base64 --decode -i <(echo -n "$1")
 }
 
+function man {
+    LESS_TERMCAP_mb=$(printf "\e[93m") \
+        LESS_TERMCAP_md=$(printf "\e[93m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[36m") \
+    command man "$@"
+}
+
 # -------------------- Aliases --------------------
 # Most of those are already set by oh-my-zsh
 alias ls='ls --color=auto'  # this one is needed if on linux
@@ -176,6 +187,21 @@ alias gp='git push'
 alias gco='git checkout'
 alias gsu='git submodule update'
 
+# Just to be able to copy paste from
+xxx_setup_dotfiles() {
+# vvvv
+git init --bare ~/.dotfiles
+alias dotfiles='command git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles config status.showUntrackedFiles no
+dotfiles remote add origin git@github.com:cakemanny/dotfiles.git
+dotfiles pull origin master
+dotfiles checkout master
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# ^^^^
+}
+unset -f xxx_setup_dotfiles
 
 # for managing our dotfiles repo
 #git init --bare ~/.dotfiles
