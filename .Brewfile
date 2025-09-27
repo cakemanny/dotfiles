@@ -209,7 +209,7 @@ cask "kitty"
 cask "mongodb-compass" if is_work_machine
 cask "tableplus" if is_work_machine
 cask "xquartz"
-cask "google-cloud-sdk"
+cask "gcloud-cli" unless is_work_machine
 cask "vlc"
 
 # we should or would also add:
