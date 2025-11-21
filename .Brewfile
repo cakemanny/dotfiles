@@ -168,9 +168,9 @@ if is_work_machine
   brew "fnm"  # like nvm but faster
   brew "fd"  # alternative to find
   brew "gnu-sed"
-  brew "go@1.21"
-  brew "go@1.22"
   brew "go@1.23"
+  brew "go@1.24"
+  brew "go@1.25"
   brew "golangci-lint"
   brew "ionosctl"
   brew "k9s"
