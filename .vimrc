@@ -385,7 +385,7 @@ let g:ale_fixers = {
         \ 'typescriptreact': ['prettier'],
         \ }
 if hostname() =~ "^bm-dan-laptop"
-    let g:ale_fix_on_save = 1
+    let g:ale_fix_on_save = 0
 else
     let g:ale_fix_on_save = 0
 endif
@@ -463,7 +463,7 @@ nnoremap <silent> <Leader>rf <Plug>(coc-refactor)
 nnoremap <silent> <Leader>rn <Plug>(coc-rename)
 
 let g:coc_global_extensions = [
-            \ 'coc-json', 'coc-tsserver', 'coc-yaml',
+            \ 'coc-json', 'coc-tsserver', 'coc-deno', 'coc-yaml',
             \ 'coc-rust-analyzer', 'coc-pyright'
             \ ]
 if hostname() !~ '^bm-dan-laptop'

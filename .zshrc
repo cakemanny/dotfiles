@@ -26,10 +26,10 @@ export PATH=$PATH:~/.ghcup/bin:~/.cargo/bin:~/.local/bin
 #export CC=/usr/local/bin/gcc-7
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 #export ARCHFLAGS="-arch x86_64"
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=vim
 export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
-export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse.engineType=Node"
+#export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse.engineType=Node"
 export GOPATH=$HOME/.gopath
 export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_COMMAND='ag --nocolor -g .'
@@ -276,7 +276,7 @@ autoload -Uz compinit
 compinit
 
 
-GOOGLE_CLOUD_SDK=${HOMEBREW_PREFIX:-/usr/local}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+GOOGLE_CLOUD_SDK=${HOMEBREW_PREFIX:-/usr/local}/share/google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
 [[ -f "$GOOGLE_CLOUD_SDK/path.zsh.inc" ]] && source "$GOOGLE_CLOUD_SDK/path.zsh.inc"
 
