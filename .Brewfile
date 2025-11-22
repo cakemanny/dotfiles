@@ -194,8 +194,9 @@ if is_work_machine
   brew "python@3.10"
   brew "python@3.11"
   cask "stackit"
-  brew "tree"
+  brew "taplo" # toml formatting
   brew "terraform"
+  brew "tree"
   brew "hashicorp/tap/vault"
   brew "volta"
 end
