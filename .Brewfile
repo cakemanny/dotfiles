@@ -163,6 +163,7 @@ if is_work_machine
   brew "difftastic"
   brew "deno"
   brew "docker-credential-helper-ecr"
+  brew "docker-compose"
   brew "duckdb"
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
