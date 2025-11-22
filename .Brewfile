@@ -188,7 +188,6 @@ if is_work_machine
   brew "openssl@3"
   brew "pkl"
   brew "pnpm"
-  brew "postgresql@14"
   brew "postgresql@16"
   brew "postgresql@17"
   brew "python@3.9"
