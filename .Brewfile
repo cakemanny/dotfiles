@@ -138,7 +138,7 @@ brew "w3m"
 brew "watch"
 brew "wget"
 brew "yarn"
-brew "youtube-dl" unless is_work_machine
+brew "yt-dlp" unless is_work_machine
 brew "zig"
 brew "zls"
 brew "zsh"
@@ -204,6 +204,8 @@ if is_work_machine
 end
 
 # ==== CASKS ====
+cask "anki" unless is_work_machine
+cask "audacity" unless is_work_machine
 cask "basictex"
 cask "flutter" if is_work_machine
 cask "flameshot" if is_work_machine
