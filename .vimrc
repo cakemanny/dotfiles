@@ -381,6 +381,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
         \ 'javascript': ['prettier'],
         \ 'css': ['prettier'],
+        \ 'python': ['ruff_format'],
         \ 'typescript': ['prettier'],
         \ 'typescriptreact': ['prettier'],
         \ }
@@ -428,7 +429,9 @@ let g:go_template_autocreate = 0
 if has('nvim')
 lua << EOF
     require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "pkl" },
+        ensure_installed = {
+            "c", "lua", "vim", "vimdoc", "query", "pkl", "markdown",
+        },
         highlight = {
             enable = true,
             disable = { "c", "python" },
@@ -471,7 +474,7 @@ if hostname() !~ '^bm-dan-laptop'
 endif
 
 augroup vimrc
-    au FileType rust nmap <silent> <Leader>od
+    au FileType rust nmap <silent> god
         \ :call CocActionAsync('runCommand', 'rust-analyzer.openDocs')<CR>
     au FileType rust ALEDisableBuffer
 augroup END
