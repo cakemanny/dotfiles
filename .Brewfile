@@ -37,6 +37,7 @@ brew "docker"
 brew "docker-buildx"
 brew "docker-completion"
 brew "docker-credential-helper"
+brew "dust" # like du -sh
 brew "emacs"
 brew "ffmpeg"
 # amazing fuzzy finder
