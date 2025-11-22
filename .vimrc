@@ -42,6 +42,10 @@ endif
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " Plug 'b4winckler/vim-objc'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'aklt/plantuml-syntax' " required for plantuml-previewer
+Plug 'tyru/open-browser.vim' " required for plantuml-previewer
+Plug 'weirongxu/plantuml-previewer.vim'
+
 "Plug 'derekwyatt/vim-scala'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'

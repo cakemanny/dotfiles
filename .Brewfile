@@ -187,6 +187,7 @@ if is_work_machine
   brew "openjdk@21"
   brew "openssl@3"
   brew "pkl"
+  brew "plantuml"
   brew "pnpm"
   brew "postgresql@16"
   brew "postgresql@17"
