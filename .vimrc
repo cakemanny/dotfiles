@@ -25,7 +25,7 @@ Plug 'kana/vim-textobj-line'
 Plug 'wellle/targets.vim'
 
 "Plug 'direnv/direnv.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'branch': 'master', 'do': ':TSUpdate'}
 Plug 'rebelot/kanagawa.nvim'  " a treesitter compatible colorscheme
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
