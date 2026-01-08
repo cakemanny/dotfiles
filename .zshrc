@@ -255,7 +255,7 @@ alias kcn='kubectl config set-context --current --namespace "$(kln | fzf -e | se
 
 # - docker aliases -
 alias dils='docker image ls'
-alias _docker-image-select=$'docker image ls | fzf -e --multi --height=50% --border --header-lines=1 | awk \'{ print $1 ":" $2 }\''
+alias _docker-image-select=$'docker image ls --format=table | fzf -e --multi --height=50% --border --header-lines=1 | awk \'{ print $1 ":" $2 }\''
 alias drmi='_docker-image-select | xargs docker image rm'
 alias dihist='_docker-image-select | xargs docker image history'
 # get a shell on the docker desktop host i.e. VM
