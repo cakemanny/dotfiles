@@ -479,6 +479,9 @@ augroup vimrc
     au FileType rust ALEDisableBuffer
 augroup END
 
+" plantuml previewer
+let g:plantuml_previewer#plantuml_jar_path = '/opt/homebrew/opt/plantuml/libexec/plantuml.jar'
+
 " useful functions
 function! CloseHiddenBuffers()
   let i = 0
