@@ -195,6 +195,7 @@ if is_work_machine
   brew "python@3.9"
   brew "python@3.10"
   brew "python@3.11"
+  brew "python@3.12"
   cask "stackit"
   brew "taplo" # toml formatting
   brew "terraform"
