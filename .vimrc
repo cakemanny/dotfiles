@@ -25,7 +25,6 @@ Plug 'kana/vim-textobj-line'
 Plug 'wellle/targets.vim'
 
 "Plug 'direnv/direnv.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'branch': 'master', 'do': ':TSUpdate'}
 Plug 'rebelot/kanagawa.nvim'  " a treesitter compatible colorscheme
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -46,6 +45,7 @@ Plug 'aklt/plantuml-syntax' " required for plantuml-previewer
 Plug 'tyru/open-browser.vim' " required for plantuml-previewer
 Plug 'weirongxu/plantuml-previewer.vim'
 
+Plug 'habamax/vim-asciidoctor'
 "Plug 'derekwyatt/vim-scala'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -59,9 +59,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'google/vim-jsonnet'
 Plug 'vmchale/dhall-vim'
 Plug 'kcl-lang/kcl.nvim'
-if has('nvim')
-    Plug 'apple/pkl-neovim'
-endif
 Plug 'ziglang/zig.vim'
 
 " Initialize plugin system
@@ -322,7 +319,7 @@ set tag=tags;/
 
 " Most indent settings are now handled by vim-sleuth
 augroup vimrc
-    au FileType clojure,rust let b:delimitMate_quotes = "\""
+    au FileType clojure,rust,plantuml let b:delimitMate_quotes = "\""
     au FileType diff color desert
     au FileType go setlocal noexpandtab
     au BufWritePost *.go :silent !goimports -w %
@@ -423,28 +420,6 @@ let g:go_template_autocreate = 0
 
 "let g:go_def_mode='gopls'
 "let g:go_info_mode='gopls'
-
-
-" ## TreeSitter
-if has('nvim')
-lua << EOF
-    require'nvim-treesitter.configs'.setup {
-        ensure_installed = {
-            "c", "lua", "vim", "vimdoc", "query", "pkl", "markdown",
-        },
-        highlight = {
-            enable = true,
-            disable = { "c", "python" },
-        },
-        indent = {
-            enable = true,
-            disable = function(lang, bufnr)
-                return lang ~= "pkl"
-            end,
-        }
-    }
-EOF
-endif
 
 
 " ## coc

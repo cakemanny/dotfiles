@@ -18,3 +18,12 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # _Enable_: cursor often seems to simply disappear completely without it
 # https://stackoverflow.com/a/77296786/4591158
 sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool YES
+
+# TODO
+# plutil -p ~/Library/Preferences/.GlobalPreferences.plist
+
+# Configure Keys for moving screens between monitors
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Move to Built-in Retina Display" "@\$1"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Move to Smart S22C300" "@\$2"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Move to Smart M80C" "@\$2"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Move to Smart M80D" "@\$2"

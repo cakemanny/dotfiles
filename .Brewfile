@@ -48,6 +48,7 @@ brew "gcc"
 #brew "ghcup"
 #brew "ghostscript"
 brew "git"
+brew "git-delta" # Nice git diffs (for use with gh dash extension)
 # OpenGL windowing library
 brew "glfw"
 brew "graphviz"
@@ -134,6 +135,7 @@ brew "uv"  # fast pip-tools replacement
 brew "ruff"
 brew "vim"
 brew "neovim"
+brew "weave"  # syntax-aware merge
 brew "w3m"
 brew "watch"
 brew "wget"
@@ -169,6 +171,8 @@ if is_work_machine
   brew "entr"  # for watching files
   brew "fnm"  # like nvm but faster
   brew "fd"  # alternative to find
+  tap "JetBrains/utils"
+  brew "JetBrains/utils/kotlin-lsp"
   brew "gnu-sed"
   brew "go@1.23"
   brew "go@1.24"
@@ -192,32 +196,42 @@ if is_work_machine
   brew "pnpm"
   brew "postgresql@16"
   brew "postgresql@17"
+  brew "pyright" # For Claude LSP
   brew "python@3.9"
   brew "python@3.10"
   brew "python@3.11"
   brew "python@3.12"
+  brew "python@3.13"
   cask "stackit"
   brew "taplo" # toml formatting
   brew "terraform"
+  brew "typescript-language-server"  # Also for claude's lsp
   brew "tree"
   brew "hashicorp/tap/vault"
   brew "volta"
+  cargo "diesel_cli"
+  go "github.com/bettermarks/composite-action-lint/cmd/composite-action-lint"
+  go "github.com/go-delve/delve/cmd/dlv"
+  go "golang.org/x/tools/cmd/goimports"
+  go "golang.org/x/tools/gopls"
 end
 
 # ==== CASKS ====
 cask "anki" unless is_work_machine
 cask "audacity" unless is_work_machine
 cask "basictex"
+cask "calibre" unless is_work_machine
+cask "claude-code"
 cask "flutter" if is_work_machine
 cask "flameshot" if is_work_machine
-cask "calibre" unless is_work_machine
+cask "inkscape"
 cask "kitty"
+cask "krita"
 cask "mongodb-compass" if is_work_machine
 cask "tableplus" if is_work_machine
 cask "xquartz"
 cask "gcloud-cli" unless is_work_machine
 cask "vlc"
-
 # we should or would also add:
 # chrome
 # firefox
