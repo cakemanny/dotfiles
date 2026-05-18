@@ -10,7 +10,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 
 brew "autoconf"
-brew "openssl@1.1"
+#brew "openssl@1.1"  # seems to be broken
 brew "readline"
 brew "automake"
 brew "binutils"
@@ -99,6 +99,8 @@ brew "nmap"
 brew "node"
 brew "pnpm"
 brew "opam"
+tap "anomalyco/tap"
+brew "opencode"
 brew "ollama"  # llm model runner
 brew "pandoc"
 brew "pgcli"
