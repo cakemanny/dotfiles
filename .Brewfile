@@ -165,7 +165,10 @@ if is_work_machine
   brew "cloudflared"
   brew "commitizen"
   brew "ctlptl"
+  tap "dlvhdr/formulae"
+  brew "dlvhdr/formulae/diffnav"
   brew "difftastic"
+  brew "d2"  # diagramming https://d2lang.com
   brew "deno"
   brew "docker-credential-helper-ecr"
   brew "docker-compose"
