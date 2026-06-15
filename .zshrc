@@ -59,6 +59,10 @@ fi
 # https://krew.sigs.k8s.io/docs/user-guide/setup/install/
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# rustup apparently now installs elsewhere (brew info rustup)
+[[ -d "${HOMEBREW_PREFIX:-/usr/local}/opt/rustup/bin" ]] && \
+    export PATH="${HOMEBREW_PREFIX:-/usr/local}/opt/rustup/bin:$PATH"
+
 # Make this one last
 export PATH=$HOME/bin:$PATH
 
