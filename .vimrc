@@ -30,15 +30,17 @@ Plug 'rebelot/kanagawa.nvim'  " a treesitter compatible colorscheme
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language specific plugins
+
 "Plug 'tpope/vim-fireplace' " clojure
 "Plug 'kongo2002/fsharp-vim'
 Plug 'vim-scripts/indenthaskell.vim'
 " Plug 'rust-lang/rust.vim'
 "Plug 'OrangeT/vim-csharp'
+Plug 'terrastruct/d2-vim'
 if 0
     Plug 'fatih/vim-go'
 endif
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " outdated
 " Plug 'b4winckler/vim-objc'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'aklt/plantuml-syntax' " required for plantuml-previewer
