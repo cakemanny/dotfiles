@@ -373,14 +373,14 @@ set splitbelow
 " We use coc for lsp
 let g:ale_disable_lsp = 1
 let g:ale_linters = {
-        \ 'python': ['flake8', 'ruff'],
+        \ 'python': ['ruff'],
         \ 'haskell':[],
         \ 'typescript': ['eslint']
         \ }
 let g:ale_fixers = {
         \ 'javascript': ['prettier'],
         \ 'css': ['prettier'],
-        \ 'python': ['ruff_format'],
+        \ 'python': ['ruff_format', 'ruff'],
         \ 'typescript': ['prettier'],
         \ 'typescriptreact': ['prettier'],
         \ }
