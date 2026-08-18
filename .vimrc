@@ -493,6 +493,10 @@ endif
 nnoremap K yiw:grep! "\b<C-R>+\b"<CR>:cw<CR>
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
+"" Python stuff
+" copy the file and line number for setting a breakpoint
+nnoremap <leader>bp :let @+ = substitute(expand('%:p'), '.\{-}/site-packages/', '', '') . ':' . line('.')<CR>
+
 "function! SendQuery()
 "  normal! `<"ay`>
 "  let keys = @a
