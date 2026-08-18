@@ -4,10 +4,8 @@ require "Socket"
 hostname = Socket.gethostname
 is_work_machine = hostname.start_with?("bm-dan-laptop")
 
-tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "homebrew/services"
 
 brew "autoconf"
 #brew "openssl@1.1"  # seems to be broken
