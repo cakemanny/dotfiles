@@ -165,6 +165,7 @@ if is_work_machine
   brew "ctlptl"
   tap "dlvhdr/formulae"
   brew "dlvhdr/formulae/diffnav"
+  brew "diffoci"
   brew "difftastic"
   brew "d2"  # diagramming https://d2lang.com
   brew "deno"
@@ -186,6 +187,7 @@ if is_work_machine
   brew "kcl"
   brew "kcl-lsp"
   brew "make"
+  brew "mise"
   brew "mongosh"
   brew "mongodb-atlas"
   brew "nss"
@@ -206,6 +208,7 @@ if is_work_machine
   brew "python@3.12"
   brew "python@3.13"
   cask "stackit"
+  cask "slack-cli"
   brew "taplo" # toml formatting
   brew "terraform"
   brew "typescript-language-server"  # Also for claude's lsp
