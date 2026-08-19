@@ -15,3 +15,6 @@
 	unstage = restore --staged
 [init]
 	defaultBranch = master
+
+[includeIf "hasconfig:remote.*.url:git@github.com:bettermarks/**"]
+	path = .gitconfig.bettermarks.inc
