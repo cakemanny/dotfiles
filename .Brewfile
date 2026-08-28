@@ -214,7 +214,6 @@ if is_work_machine
   brew "typescript-language-server"  # Also for claude's lsp
   brew "tree"
   brew "hashicorp/tap/vault"
-  brew "volta"
   cargo "diesel_cli"
   go "github.com/bettermarks/composite-action-lint/cmd/composite-action-lint"
   go "github.com/go-delve/delve/cmd/dlv"
@@ -227,7 +226,7 @@ cask "anki" unless is_work_machine
 cask "audacity" unless is_work_machine
 cask "basictex"
 cask "calibre" unless is_work_machine
-cask "claude-code"
+cask "claude-code" if is_work_machine
 cask "flutter" if is_work_machine
 cask "flameshot" if is_work_machine
 cask "inkscape"
