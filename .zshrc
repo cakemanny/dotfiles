@@ -27,7 +27,7 @@ export PATH=$PATH:~/.ghcup/bin:~/.cargo/bin:~/.local/bin
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 #export ARCHFLAGS="-arch x86_64"
 export EDITOR=nvim
-export VISUAL=vim
+export VISUAL=nvim
 export JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError"
 #export SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dsbt.jse.engineType=Node"
 export GOPATH=$HOME/.gopath
