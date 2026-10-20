@@ -176,6 +176,7 @@ if is_work_machine
   brew "fd"  # alternative to find
   tap "JetBrains/utils"
   brew "JetBrains/utils/kotlin-lsp"
+  brew "gum"
   brew "gnu-sed"
   brew "go@1.23"
   brew "go@1.24"
@@ -218,6 +219,7 @@ if is_work_machine
   go "github.com/go-delve/delve/cmd/dlv"
   go "golang.org/x/tools/cmd/goimports"
   go "golang.org/x/tools/gopls"
+  cask "cloudflare-warp"
 end
 
 # ==== CASKS ====
